@@ -18,7 +18,7 @@ public:
 	int play();
 	int moves_num; //tracks total number of moves made by both players.
 
-	unsigned int longestStrLen;//tracks the longest display string length of any piece on the board
+	
 
 protected:
 	int boardWidth; //5
@@ -27,6 +27,8 @@ protected:
 	char winner;//saves game piece of the player who won the game.
 	std::vector<std::pair<int, int>> playerX; //vector of all moves by player X.
 	std::vector<std::pair<int, int>> playerO; //vector of all moves by player O.
+
+	unsigned int longestStrLen;//tracks the longest display string length of any piece on the board
 };
 
 class TicTacToe : public GameBase {
