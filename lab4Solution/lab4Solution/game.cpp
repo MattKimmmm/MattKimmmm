@@ -43,16 +43,9 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
                 gamePiece piece;
                 piece.boardDisplay = ' ';
                 game.pieceList.push_back(piece);
-
-
-                
-                
-
-
             }
         }
     }
-    int setw_man = setw(game.longestDispLen);
 
     //print out game pieces on the board.
     for (int i = game.boardHeight - 1; i >= 0; i--) {
@@ -63,15 +56,15 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
             cout << setw(game.longestDispLen) << game.pieceList[index].boardDisplay;
         }
         // same spacing for displayed pieces for horizontal alignment
-        for (int i = 0; i < setw_man; i++) {
+        for (int i = 0; i < game.boardHeight - 1; i++) {
             cout << endl;
         }
     }
-    /*not implemented for the vertical label*/
-    cout << "0 " << "1 " << "2 " << "3 " << "4 "; //print out horizontal label
-    cout << 0;
-    for (int i = 1; i  ; i--) {
 
+    //print out horizontal label
+    cout << 0;
+    for (int i = 1; i <= game.boardWidth; i++) {
+        cout << setw(game.longestDispLen) << i;
     }
     return out;
 }
