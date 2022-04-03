@@ -23,6 +23,12 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
                 gamePiece piece;
                 piece.boardDisplay = ' ';
                 game.pieceList.push_back(piece);
+
+
+                
+                
+
+
             }
         }
     }
