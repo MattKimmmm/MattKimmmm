@@ -4,13 +4,13 @@
 #include <iostream>
 #include <iomanip>
 #include <ostream>
-#include "game.h"
+#include "gameBase.h"
 #include "lab3.h"
 #include "usageFunction.h"
 
 using namespace std;
 
-TicTacToe::TicTacToe() :boardWidth(5), boardHeight(5), piece('X'), playerX({}), playerO({}), moves_num(0), winner(' ') {}
+TicTacToe::TicTacToe() :boardWidth, boardHeight(5), piece('X'), playerX({}), playerO({}), moves_num(0), winner(' ') {}
 
 //prints the board
 /*Modify the ostream insertion operator (from the previous lab) so that it takes a reference
