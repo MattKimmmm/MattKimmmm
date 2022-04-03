@@ -11,7 +11,7 @@ class GameBase {
 public:
 	friend std::ostream& operator<<(std::ostream& out, const TicTacToe& game);
 	mutable std::vector<gamePiece> pieceList; //vector of all pieces on the board.
-	bool done();
+	virtual bool done() = 0;
 	bool draw();
 	int prompt(unsigned int& x, unsigned int& y);
 	int turn();
@@ -40,4 +40,5 @@ public:
 	//Prints the object
 	virtual void print() override;
 	
+	virtual bool done();
 };
