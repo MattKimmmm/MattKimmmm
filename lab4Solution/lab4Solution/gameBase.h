@@ -18,6 +18,8 @@ public:
 	int play();
 	int moves_num; //tracks total number of moves made by both players.
 
+	virtual void print() = 0;
+
 	
 
 protected:
@@ -34,6 +36,4 @@ protected:
 class TicTacToe : public GameBase {
 public:
 	TicTacToe();
-	virtual bool draw();
-	virtual int turn();
 };
