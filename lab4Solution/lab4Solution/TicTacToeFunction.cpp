@@ -60,7 +60,7 @@ bool TicTacToe::draw() {
 }
 
 //prompts players to input coordinates for their piece. If the input is invalid, prompt the player again.
-int TicTacToe::prompt(unsigned int& x, unsigned int& y) {
+int GameBase::prompt(unsigned int& x, unsigned int& y) {
 	string userInput;
 	cout << "Input coordinate for your piece. Example: 1,1 : ";
 	cin >> userInput; //receieve input from user.

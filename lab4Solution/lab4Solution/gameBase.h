@@ -13,8 +13,10 @@ public:
 	mutable std::vector<gamePiece> pieceList; //vector of all pieces on the board.
 	virtual bool done() = 0;
 	bool draw();
+	bool done();
+	virtual bool draw();
 	int prompt(unsigned int& x, unsigned int& y);
-	int turn();
+	virtual int turn();
 	int play();
 	int moves_num; //tracks total number of moves made by both players.
 
@@ -36,6 +38,8 @@ protected:
 class TicTacToe : public GameBase {
 public:
 	TicTacToe();
+	virtual int turn();
+	virtual bool draw();
 
 	//Prints the object
 	virtual void print() override;
