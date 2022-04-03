@@ -18,7 +18,7 @@ public:
 	int play();
 	int moves_num; //tracks total number of moves made by both players.
 
-	unsigned int longestStrLen = 0;//tracks the longest display string length of any piece on the board
+	unsigned int longestStrLen;//tracks the longest display string length of any piece on the board
 
 protected:
 	int boardWidth; //5
