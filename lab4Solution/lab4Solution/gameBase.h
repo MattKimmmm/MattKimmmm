@@ -28,7 +28,7 @@ protected:
 	std::vector<std::pair<int, int>> playerX; //vector of all moves by player X.
 	std::vector<std::pair<int, int>> playerO; //vector of all moves by player O.
 
-	unsigned int longestStrLen;//tracks the longest display string length of any piece on the board
+	unsigned int longestDispLen;//tracks the longest display string length of any piece on the board
 };
 
 class TicTacToe : public GameBase {
