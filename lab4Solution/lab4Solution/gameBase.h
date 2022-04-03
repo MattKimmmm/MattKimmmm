@@ -17,7 +17,7 @@ public:
 	int turn();
 	int play();
 	int moves_num; //tracks total number of moves made by both players.
-private:
+protected:
 	int boardWidth; //5
 	int boardHeight; //5
 	char piece; //tracks current piece to be played by a player.
