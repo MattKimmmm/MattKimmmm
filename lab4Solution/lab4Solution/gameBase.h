@@ -12,9 +12,9 @@ public:
 	friend std::ostream& operator<<(std::ostream& out, const TicTacToe& game);
 	mutable std::vector<gamePiece> pieceList; //vector of all pieces on the board.
 	bool done();
-	bool draw();
+	virtual bool draw();
 	int prompt(unsigned int& x, unsigned int& y);
-	int turn();
+	virtual int turn();
 	int play();
 	int moves_num; //tracks total number of moves made by both players.
 
@@ -34,4 +34,6 @@ protected:
 class TicTacToe : public GameBase {
 public:
 	TicTacToe();
+	virtual bool draw();
+	virtual int turn();
 };
