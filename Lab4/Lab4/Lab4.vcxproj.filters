@@ -15,27 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lab4Solution.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TicTacToeFunction.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="usageFunction.cpp">
+    <ClCompile Include="Lab4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Lab4\Lab4\Lab4.h">
+    <ClInclude Include="Lab4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gameBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Readme.txt">
-      <Filter>Source Files</Filter>
-    </Text>
   </ItemGroup>
 </Project>
