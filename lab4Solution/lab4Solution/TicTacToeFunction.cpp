@@ -1,6 +1,7 @@
 #include "gamePiece.h"
 #include "game.h"
 #include "lab3.h"
+#include "gameBase.h"
 #include <string>
 #include <vector>
 #include <iostream>
@@ -168,8 +169,13 @@ int TicTacToe::turn() {
 	return success;
 }
 
+/*Move the play() method from your derived class to the base class and modify it so that
+instead of printing the game board using the ostream operator directly, it instead calls the
+print() method (that allows each derived class to override printing using its own ostream
+insertion operator).
+*/
 int TicTacToe::play() {
-	cout << *this << endl; //print initial board.
+	print(); //print initial board.
 	int turnCheck;
 	while (!done() && !draw()) {
 		turnCheck = turn();
