@@ -36,4 +36,6 @@ protected:
 class TicTacToe : public GameBase {
 public:
 	TicTacToe();
+	virtual int turn();
+	virtual bool draw();
 };
