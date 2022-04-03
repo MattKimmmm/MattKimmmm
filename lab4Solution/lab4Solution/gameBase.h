@@ -7,9 +7,8 @@
 #include "gamePiece.h"
 
 //The TicTacToe game class.
-class TicTacToe {
+class GameBase {
 public:
-	TicTacToe();
 	friend std::ostream& operator<<(std::ostream& out, const TicTacToe& game);
 	mutable std::vector<gamePiece> pieceList; //vector of all pieces on the board.
 	bool done();
@@ -18,9 +17,6 @@ public:
 	int turn();
 	int play();
 	int moves_num; //tracks total number of moves made by both players.
-
-	unsigned int longestStrLen = 0;//tracks the longest display string length of any piece on the board
-
 private:
 	int boardWidth; //5
 	int boardHeight; //5
@@ -28,4 +24,10 @@ private:
 	char winner;//saves game piece of the player who won the game.
 	std::vector<std::pair<int, int>> playerX; //vector of all moves by player X.
 	std::vector<std::pair<int, int>> playerO; //vector of all moves by player O.
+};
+
+class TicTacToe : public GameBase {
+public:
+	TicTacToe();
+
 };
