@@ -4,14 +4,14 @@
 #include <iostream>
 #include <istream>
 #include <sstream>
-//#include "gamePiece.h"
+#include "gamePiece.h"
 
 //The TicTacToe game class.
 class TicTacToe {
 public:
 	TicTacToe();
 	friend std::ostream& operator<<(std::ostream& out, const TicTacToe& game);
-	//mutable std::vector<gamePiece> pieceList; //vector of all pieces on the board.
+	mutable std::vector<gamePiece> pieceList; //vector of all pieces on the board.
 	bool done();
 	bool draw();
 	int prompt(unsigned int& x, unsigned int& y);

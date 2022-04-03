@@ -32,6 +32,9 @@
     <ClInclude Include="gameBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="gamePiece.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Readme.txt">
