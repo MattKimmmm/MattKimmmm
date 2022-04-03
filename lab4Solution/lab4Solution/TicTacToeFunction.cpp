@@ -1,5 +1,5 @@
 #include "gamePiece.h"
-#include "game.h"
+#include "gameBase.h"
 #include "lab3.h"
 #include <string>
 #include <vector>
@@ -191,4 +191,8 @@ int TicTacToe::play() {
 		return drawGame;
 	}
 	return success;
+}
+
+ void TicTacToe:: print() {
+	cout << *this << endl;
 }
