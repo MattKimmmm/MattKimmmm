@@ -42,11 +42,13 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
         cout << i << ""; //print out vertical label
         for (int j = 0; j <= game.boardWidth - 1; j++) {
             int index = game.boardWidth * i + j;
-            cout << setw(game.longestStrLen) << game.pieceList[index].boardDisplay;
+            /*using setw manipulator for the spacings between displayed pieces*/
+            cout << setw(game.longestDispLen) << game.pieceList[index].boardDisplay;
         }
         cout << endl;
     }
-    cout << setw(game.longestStrLen) << "0 " << "1 " << "2 " << "3 " << "4 "; //print out horizontal label
+    /*not implemented for the vertical label*/
+    cout << "0 " << "1 " << "2 " << "3 " << "4 "; //print out horizontal label
     return out;
 }
 int main(int argc, char* argv[])
