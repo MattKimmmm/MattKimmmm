@@ -38,7 +38,6 @@ public:
 	TicTacToe();
 
 	//Prints the object
-	virtual void print() override {
-		cout << *this << endl;
-	}
+	virtual void print() override;
+	
 };
