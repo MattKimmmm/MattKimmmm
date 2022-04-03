@@ -36,4 +36,9 @@ protected:
 class TicTacToe : public GameBase {
 public:
 	TicTacToe();
+
+	//Prints the object
+	virtual void print() override {
+		cout << *this << endl;
+	}
 };
