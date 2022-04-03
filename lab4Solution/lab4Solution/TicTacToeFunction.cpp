@@ -1,5 +1,5 @@
 #include "gamePiece.h"
-#include "game.h"
+#include "gameBase.h"
 #include "lab3.h"
 #include "gameBase.h"
 #include <string>
@@ -61,7 +61,7 @@ bool TicTacToe::draw() {
 }
 
 //prompts players to input coordinates for their piece. If the input is invalid, prompt the player again.
-int TicTacToe::prompt(unsigned int& x, unsigned int& y) {
+int GameBase::prompt(unsigned int& x, unsigned int& y) {
 	string userInput;
 	cout << "Input coordinate for your piece. Example: 1,1 : ";
 	cin >> userInput; //receieve input from user.
@@ -197,4 +197,8 @@ int TicTacToe::play() {
 		return drawGame;
 	}
 	return success;
+}
+
+ void TicTacToe:: print() {
+	cout << *this << endl;
 }

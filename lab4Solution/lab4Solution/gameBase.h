@@ -11,10 +11,11 @@ class GameBase {
 public:
 	friend std::ostream& operator<<(std::ostream& out, const TicTacToe& game);
 	mutable std::vector<gamePiece> pieceList; //vector of all pieces on the board.
-	bool done();
-	bool draw();
+	virtual bool done() = 0;
+
+	virtual bool draw();
 	int prompt(unsigned int& x, unsigned int& y);
-	int turn();
+	virtual int turn();
 	int play();
 	int moves_num; //tracks total number of moves made by both players.
 
@@ -36,9 +37,11 @@ protected:
 class TicTacToe : public GameBase {
 public:
 	TicTacToe();
+	virtual int turn();
+	virtual bool draw();
 
 	//Prints the object
-	virtual void print() override {
-		cout << *this << endl;
-	}
+	virtual void print() override;
+	
+	virtual bool done();
 };
