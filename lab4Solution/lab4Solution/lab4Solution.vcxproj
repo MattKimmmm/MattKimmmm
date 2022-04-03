@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="lab4Solution.cpp" />
+    <ClCompile Include="game.cpp" />
     <ClCompile Include="TicTacToeFunction.cpp" />
     <ClCompile Include="usageFunction.cpp" />
   </ItemGroup>

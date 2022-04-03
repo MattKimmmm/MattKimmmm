@@ -107,6 +107,14 @@ int TicTacToe::prompt(unsigned int& x, unsigned int& y) {
 					pieceList[index].boardDisplay = 'O';
 					playerO.push_back(make_pair(x, y));
 				}
+
+
+
+				//Updates the longestDispLen variable if the new game piece has a longer length
+				int length = piece.boardDisplay.length(); //A temp variable that keeps the length of the game piece display
+				if (length > longestDispLen) {
+					longestDispLen = length;
+				}
 			}
 		}
 		else {

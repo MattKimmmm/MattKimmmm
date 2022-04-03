@@ -5,12 +5,22 @@
 #include <iomanip>
 #include <ostream>
 #include "gameBase.h"
-#include "lab3.h"
-#include "usageFunction.h"
+//#include "lab3.h"
+//#include "usageFunction.h"
 
 using namespace std;
 
-TicTacToe::TicTacToe() :boardWidth, boardHeight(5), piece('X'), playerX({}), playerO({}), moves_num(0), winner(' ') {}
+//TicTacToe::TicTacToe() :boardWidth(5), boardHeight(5), piece('X'), playerX({}), playerO({}), moves_num(0), winner(' ') {}
+
+TicTacToe::TicTacToe() {
+    TicTacToe game;
+    game.boardWidth = 5;
+    game.boardHeight = 5;
+    game.piece = "X";
+    game.winner = " ";
+    game.playerO = {};
+    game.playerX = {};
+}
 
 //prints the board
 /*Modify the ostream insertion operator (from the previous lab) so that it takes a reference
@@ -33,6 +43,12 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
                 gamePiece piece;
                 piece.boardDisplay = ' ';
                 game.pieceList.push_back(piece);
+
+
+                
+                
+
+
             }
         }
     }
