@@ -18,16 +18,10 @@
     <ClCompile Include="lab4Solution.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Lab4\Lab4\Lab4.cpp">
+    <ClCompile Include="TicTacToeFunction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\lab3-danie1r\lab3\lab3\gameFunction.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\lab3-danie1r\lab3\lab3\lab3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\lab3-danie1r\lab3\lab3\usageFunction.cpp">
+    <ClCompile Include="usageFunction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,16 +29,7 @@
     <ClInclude Include="..\..\Lab4\Lab4\Lab4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\lab3-danie1r\lab3\lab3\game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lab3-danie1r\lab3\lab3\gamePiece.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lab3-danie1r\lab3\lab3\lab3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lab3-danie1r\lab3\lab3\usageFunction.h">
+    <ClInclude Include="gameBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

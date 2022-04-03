@@ -139,18 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\lab3-danie1r\lab3\lab3\gameFunction.cpp" />
-    <ClCompile Include="..\..\..\..\lab3-danie1r\lab3\lab3\lab3.cpp" />
-    <ClCompile Include="..\..\..\..\lab3-danie1r\lab3\lab3\usageFunction.cpp" />
-    <ClCompile Include="..\..\Lab4\Lab4\Lab4.cpp" />
     <ClCompile Include="lab4Solution.cpp" />
+    <ClCompile Include="TicTacToeFunction.cpp" />
+    <ClCompile Include="usageFunction.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\lab3-danie1r\lab3\lab3\game.h" />
-    <ClInclude Include="..\..\..\..\lab3-danie1r\lab3\lab3\gamePiece.h" />
-    <ClInclude Include="..\..\..\..\lab3-danie1r\lab3\lab3\lab3.h" />
-    <ClInclude Include="..\..\..\..\lab3-danie1r\lab3\lab3\usageFunction.h" />
     <ClInclude Include="..\..\Lab4\Lab4\Lab4.h" />
+    <ClInclude Include="gameBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,20 +1,57 @@
-// lab4Solution.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// lab3.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
+#include <ostream>
+#include "game.h"
+#include "lab3.h"
+#include "usageFunction.h"
 
-int main()
-{
-    std::cout << "Hello World!\n";
+using namespace std;
+
+TicTacToe::TicTacToe() :boardWidth(5), boardHeight(5), piece('X'), playerX({}), playerO({}), moves_num(0), winner(' ') {}
+
+//prints the board
+ostream& operator<<(ostream& out, const TicTacToe& game) {
+    //if there has been no moves made by any players, then fill the game board with empty cells.
+    if (game.moves_num == 0) {
+        for (int i = game.boardHeight - 1; i >= 0; i--)
+        {
+            for (int j = 0; j <= game.boardWidth - 1; j++)
+            {
+                int index = game.boardWidth * i + j;
+                gamePiece piece;
+                piece.boardDisplay = ' ';
+                game.pieceList.push_back(piece);
+            }
+        }
+    }
+
+    //print out game pieces on the board.
+    for (int i = game.boardHeight - 1; i >= 0; i--) {
+        cout << i << ""; //print out vertical label
+        for (int j = 0; j <= game.boardWidth - 1; j++) {
+            int index = game.boardWidth * i + j;
+            cout << game.pieceList[index].boardDisplay << " ";
+        }
+        cout << endl;
+    }
+    cout << " " << "0 " << "1 " << "2 " << "3 " << "4 "; //print out horizontal label
+    return out;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+int main(int argc, char* argv[])
+{
+    if (argc != commandLineNum) {
+        cout << "To execute the program, you need two command line arguments." << endl;
+        return userMessage();
+    }
+    else {
+        string filename_check = argv[filename];
+        if (filename_check != "TicTacToe") {
+            cout << "Filename Incorrect." << endl;
+            return userMessage();
+        }
+    }
+    TicTacToe game;
+    return game.play();
+}
