@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="GomokuFunction.cpp" />
     <ClCompile Include="TicTacToeFunction.cpp" />
     <ClCompile Include="usageFunction.cpp" />
   </ItemGroup>

@@ -2,11 +2,6 @@
 #include "gameBase.h"
 //#include "lab3.h"
 #include "gameBase.h"
-#include <string>
-#include <vector>
-#include <iostream>
-#include <istream>
-#include <sstream>
 
 using namespace std;
 
@@ -16,8 +11,9 @@ TicTacToe::TicTacToe() {
 	game.boardHeight = 5;
 	game.piece = "X";
 	game.winner = " ";
-	game.playerO = {};
-	game.playerX = {};
+	game.player1 = {};
+	game.player2 = {};
+
 }
 
 //Checks if the game is over by checking if one of the player
@@ -28,7 +24,7 @@ bool TicTacToe::done() {
 	//checks if there are 3 horizontally consecutive pieces.
 	for (unsigned long long i = 6; i < 17; i = i + 5)
 	{
-		if (pieceList[i].boardDisplay != ' ' && pieceList[i].boardDisplay == pieceList[i + 1].boardDisplay
+		if (pieceList[i].boardDisplay != " " && pieceList[i].boardDisplay == pieceList[i + 1].boardDisplay
 			&& pieceList[i + 1].boardDisplay == pieceList[i + 2].boardDisplay)
 		{
 			winner = pieceList[i].boardDisplay; //assign the piece as winning piece.
@@ -38,7 +34,7 @@ bool TicTacToe::done() {
 
 	//checks if there are 3 vertically consecutive pieces.
 	for (unsigned long long i = firstPieceIndex; i < 9; i++) {
-		if (pieceList[i].boardDisplay != ' ' && pieceList[i].boardDisplay == pieceList[i + 5].boardDisplay
+		if (pieceList[i].boardDisplay != " " && pieceList[i].boardDisplay == pieceList[i + 5].boardDisplay
 			&& pieceList[i + 5].boardDisplay == pieceList[i + 10].boardDisplay)
 		{
 			winner = pieceList[i].boardDisplay;
@@ -47,7 +43,7 @@ bool TicTacToe::done() {
 	}
 
 	//checks if there are 3 diagonally(from bottom-left to top-right) consecutive pieces. 
-	if (pieceList[firstPieceIndex].boardDisplay != ' ' && pieceList[firstPieceIndex].boardDisplay == pieceList[firstPieceIndex * 2].boardDisplay
+	if (pieceList[firstPieceIndex].boardDisplay != " " && pieceList[firstPieceIndex].boardDisplay == pieceList[firstPieceIndex * 2].boardDisplay
 		&& pieceList[firstPieceIndex * 2].boardDisplay == pieceList[firstPieceIndex * 3].boardDisplay)
 	{
 		winner = pieceList[firstPieceIndex].boardDisplay;
@@ -55,7 +51,7 @@ bool TicTacToe::done() {
 	}
 
 	//checks if there are 3 diagonally(from top-left to bottom-right) consecutive pieces.
-	if (pieceList[8].boardDisplay != ' ' && pieceList[8].boardDisplay == pieceList[12].boardDisplay && pieceList[12].boardDisplay == pieceList[16].boardDisplay) {
+	if (pieceList[8].boardDisplay != " " && pieceList[8].boardDisplay == pieceList[12].boardDisplay && pieceList[12].boardDisplay == pieceList[16].boardDisplay) {
 		winner = pieceList[8].boardDisplay;
 		return true;
 	}
@@ -112,11 +108,11 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 			else {
 				if (piece == 'X') {
 					pieceList[index].boardDisplay = 'X';
-					playerX.push_back(make_pair(x, y));
+					player1.push_back(make_pair(x, y));
 				}
 				else if (piece == 'O') {
 					pieceList[index].boardDisplay = 'O';
-					playerO.push_back(make_pair(x, y));
+					player2.push_back(make_pair(x, y));
 				}
 
 
@@ -147,8 +143,8 @@ int TicTacToe::turn() {
 		if (promptResult == success) {
 			cout << *this << endl; //print board
 			cout << "Player X: "; //print player's past moves.
-			for (unsigned int i = 0; i < playerX.size(); i++) {
-				cout << playerX[i].first << "," << playerX[i].second << "; ";
+			for (unsigned int i = 0; i < player1.size(); i++) {
+				cout << player1[i].first << "," << player1[i].second << "; ";
 			}
 			cout << endl;
 			piece = 'O'; // switch player turn
@@ -164,8 +160,8 @@ int TicTacToe::turn() {
 		if (promptResult == success) {
 			cout << *this << endl;
 			cout << "Player O: ";
-			for (unsigned int i = 0; i < playerO.size(); i++) {
-				cout << playerO[i].first << "," << playerO[i].second << "; ";
+			for (unsigned int i = 0; i < player2.size(); i++) {
+				cout << player2[i].first << "," << player2[i].second << "; ";
 			}
 			cout << endl;
 			piece = 'X';

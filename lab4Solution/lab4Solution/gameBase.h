@@ -11,7 +11,6 @@
 class GameBase {
 public:
 	static GameBase* checkArg(int argc, char* argv[]);
-	friend std::ostream& operator<<(std::ostream& out, const TicTacToe& game);
 	mutable std::vector<gamePiece> pieceList; //vector of all pieces on the board.
 	virtual bool done() = 0;
 	virtual bool draw();
@@ -24,12 +23,12 @@ public:
 	
 
 protected:
-	int boardWidth; //5
-	int boardHeight; //5
+	int boardWidth; 
+	int boardHeight; 
 	std::string piece; //tracks current piece to be played by a player.
 	std::string winner;//saves game piece of the player who won the game.
-	std::vector<std::pair<int, int>> playerX; //vector of all moves by player X.
-	std::vector<std::pair<int, int>> playerO; //vector of all moves by player O.
+	std::vector<std::pair<int, int>> player1; //vector of all moves by player X.
+	std::vector<std::pair<int, int>> player2; //vector of all moves by player O.
 
 	unsigned int longestDispLen;//tracks the longest display string length of any piece on the board
 };
@@ -37,13 +36,22 @@ protected:
 class TicTacToe : public GameBase {
 public:
 	TicTacToe();
+	friend std::ostream& operator<<(std::ostream& out, const TicTacToe& game);
 	virtual int turn();
 	virtual bool draw();
-
 	//Prints the object
 	virtual void print() override;
-	
 	virtual bool done();
 };
 
+class GomokuGame : public GameBase {
+public:
+	GomokuGame();
+	friend std::ostream& operator<<(std::ostream& out, const GomokuGame& game);
+	virtual int turn();
+	virtual bool draw();
+	//Prints the object
+	virtual void print() override;
+	virtual bool done();
+};
 int userMessage();

@@ -10,8 +10,13 @@ using namespace std;
 
 static GameBase* checkArg(int argc, char* argv[]) {
     GameBase* game = 0;
-    if (argc == 2 && argv[1] == "TicTacToe") {
-        game = new TicTacToe();
+    if (argc == 2) {
+        if (argv[1] == "TicTacToe") {
+            game = new TicTacToe();
+        }
+        else if (argv[1] == "Gomoku") {
+            game = new GomokuGame();
+        }
     }
     return game;
 }
@@ -19,6 +24,43 @@ static GameBase* checkArg(int argc, char* argv[]) {
 
 //prints the board
 ostream& operator<<(ostream& out, const TicTacToe& game) {
+    //if there has been no moves made by any players, then fill the game board with empty cells.
+    if (game.moves_num == 0) {
+        for (int i = game.boardHeight - 1; i >= 0; i--)
+        {
+            for (int j = 0; j <= game.boardWidth - 1; j++)
+            {
+                int index = game.boardWidth * i + j;
+                gamePiece piece;
+                piece.boardDisplay = ' ';
+                game.pieceList.push_back(piece);
+            }
+        }
+    }
+
+    //print out game pieces on the board.
+    for (int i = game.boardHeight - 1; i >= 0; i--) {
+        cout << i << ""; //print out vertical label
+        for (int j = 0; j <= game.boardWidth - 1; j++) {
+            int index = game.boardWidth * i + j;
+            /*using setw manipulator for the spacings between displayed pieces*/
+            cout << setw(game.longestDispLen) << game.pieceList[index].boardDisplay;
+        }
+        // same spacing for displayed pieces for horizontal alignment
+        for (int i = 0; i < game.boardHeight - 1; i++) {
+            cout << endl;
+        }
+    }
+
+    //print out horizontal label
+    cout << 0;
+    for (int i = 1; i <= game.boardWidth; i++) {
+        cout << setw(game.longestDispLen) << i;
+    }
+    return out;
+}
+
+ostream& operator<<(ostream& out, const GomokuGame& game) {
     //if there has been no moves made by any players, then fill the game board with empty cells.
     if (game.moves_num == 0) {
         for (int i = game.boardHeight - 1; i >= 0; i--)
