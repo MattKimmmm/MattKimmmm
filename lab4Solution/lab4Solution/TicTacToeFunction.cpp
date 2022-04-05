@@ -174,7 +174,7 @@ instead of printing the game board using the ostream operator directly, it inste
 print() method (that allows each derived class to override printing using its own ostream
 insertion operator).
 */
-int TicTacToe::play() {
+int GameBase::play() {
 	print(); //print initial board.
 	int turnCheck;
 	while (!done() && !draw()) {
