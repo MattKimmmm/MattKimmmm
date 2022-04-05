@@ -168,7 +168,7 @@ int TicTacToe::turn() {
 	return success;
 }
 
-int TicTacToe::play() {
+int gameBase::play() {
 	cout << *this << endl; //print initial board.
 	int turnCheck;
 	while (!done() && !draw()) {
