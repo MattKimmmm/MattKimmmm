@@ -23,15 +23,6 @@ TicTacToe::TicTacToe() {
 }
 
 //prints the board
-/*Modify the ostream insertion operator (from the previous lab) so that it takes a reference
-to a const object of the derived class for your TicTacToe game, and uses the maximum
-display string length stored by the base class to print the board out not just by putting a
-space between consecutive piece symbols on a line, but also adjusting the widths of the
-squares according to the maximum display string length so that columns of the board are
-aligned vertically with at least a space between pieces when they are displayed. Hint: the
-setw manipulator (and possibly other stream manipulators) and/or the stream width
-method can help to simplify coding of that feature.
-*/
 ostream& operator<<(ostream& out, const TicTacToe& game) {
     //if there has been no moves made by any players, then fill the game board with empty cells.
     if (game.moves_num == 0) {
