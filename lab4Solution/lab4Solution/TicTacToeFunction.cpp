@@ -101,17 +101,17 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 				prompt(x, y);
 			}
 			//check if the board coordinate is already occupied.
-			else if (pieceList[index].boardDisplay != ' ') {
+			else if (pieceList[index].boardDisplay != " ") {
 				cout << "Board coordinate has been played, choose another " << endl;
 				prompt(x, y);
 			}
 			else {
-				if (piece == 'X') {
-					pieceList[index].boardDisplay = 'X';
+				if (piece == "X") {
+					pieceList[index].boardDisplay = "X";
 					player1.push_back(make_pair(x, y));
 				}
-				else if (piece == 'O') {
-					pieceList[index].boardDisplay = 'O';
+				else if (piece == "O") {
+					pieceList[index].boardDisplay = "O";
 					player2.push_back(make_pair(x, y));
 				}
 
@@ -137,7 +137,7 @@ int TicTacToe::turn() {
 	unsigned int x_coor = 0;
 	unsigned int y_coor = 0;
 	int promptResult;
-	if (piece == 'X') {
+	if (piece == "X") {
 		cout << "current player: X" << endl;
 		promptResult = prompt(x_coor, y_coor);
 		if (promptResult == success) {
@@ -147,14 +147,14 @@ int TicTacToe::turn() {
 				cout << player1[i].first << "," << player1[i].second << "; ";
 			}
 			cout << endl;
-			piece = 'O'; // switch player turn
+			piece = "O"; // switch player turn
 			moves_num++; //increment total moves played by both players.
 		}
 		else {
 			return promptResult;
 		}
 	}
-	else if (piece == 'O') {
+	else if (piece == "O") {
 		cout << "current player: O" << endl;
 		promptResult = prompt(x_coor, y_coor);
 		if (promptResult == success) {
@@ -164,7 +164,7 @@ int TicTacToe::turn() {
 				cout << player2[i].first << "," << player2[i].second << "; ";
 			}
 			cout << endl;
-			piece = 'X';
+			piece = "X";
 			moves_num++;
 		}
 		else {
