@@ -56,10 +56,13 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
 }
 int main(int argc, char* argv[])
 {
-    //shared_ptr<GameBase*> x = make_shared<GameBase*>(checkArg(argc, argv));
+    
 
     GameBase* game = checkArg(argc, argv);
     if (game != 0) {
+        //Create shared_ptr of the GameBase object
+        shared_ptr<GameBase> sharedGameptr = shared_ptr<GameBase>(game);
+
         return game->play();
     }  
     return userMessage(); 
