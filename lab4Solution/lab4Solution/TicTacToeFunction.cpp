@@ -1,6 +1,6 @@
 #include "gamePiece.h"
 #include "gameBase.h"
-#include "lab3.h"
+//#include "lab3.h"
 #include "gameBase.h"
 #include <string>
 #include <vector>
@@ -9,6 +9,16 @@
 #include <sstream>
 
 using namespace std;
+
+TicTacToe::TicTacToe() {
+	TicTacToe game;
+	game.boardWidth = 5;
+	game.boardHeight = 5;
+	game.piece = "X";
+	game.winner = " ";
+	game.playerO = {};
+	game.playerX = {};
+}
 
 //Checks if the game is over by checking if one of the player
 //has placed 3 consecutive game pieces on the board.

@@ -9,16 +9,15 @@
 //The TicTacToe game class.
 class GameBase {
 public:
+	static GameBase* checkArg(int argc, char* argv[]);
 	friend std::ostream& operator<<(std::ostream& out, const TicTacToe& game);
 	mutable std::vector<gamePiece> pieceList; //vector of all pieces on the board.
 	virtual bool done() = 0;
-
 	virtual bool draw();
 	int prompt(unsigned int& x, unsigned int& y);
 	virtual int turn();
 	int play();
 	int moves_num; //tracks total number of moves made by both players.
-
 	virtual void print() = 0;
 
 	

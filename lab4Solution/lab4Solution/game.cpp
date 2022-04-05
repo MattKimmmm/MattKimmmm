@@ -12,15 +12,14 @@ using namespace std;
 
 //TicTacToe::TicTacToe() :boardWidth(5), boardHeight(5), piece('X'), playerX({}), playerO({}), moves_num(0), winner(' ') {}
 
-TicTacToe::TicTacToe() {
-    TicTacToe game;
-    game.boardWidth = 5;
-    game.boardHeight = 5;
-    game.piece = "X";
-    game.winner = " ";
-    game.playerO = {};
-    game.playerX = {};
+static GameBase* checkArg(int argc, char* argv[]) {
+    GameBase* game = 0;
+    if (argc == 2 && argv[1] == "TicTacToe") {
+        game = new TicTacToe();
+    }
+    return game;
 }
+
 
 //prints the board
 ostream& operator<<(ostream& out, const TicTacToe& game) {
