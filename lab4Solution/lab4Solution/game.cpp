@@ -57,13 +57,22 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
 int main(int argc, char* argv[])
 {
     
+    try{
+        GameBase* game = checkArg(argc, argv);
 
-    GameBase* game = checkArg(argc, argv);
-    if (game != 0) {
-        //Create shared_ptr of the GameBase object
-        shared_ptr<GameBase> sharedGameptr = shared_ptr<GameBase>(game);
+        if (game != 0) {
+            //Create shared_ptr of the GameBase object
+            shared_ptr<GameBase> sharedGameptr = shared_ptr<GameBase>(game);
 
-        return game->play();
-    }  
-    return userMessage(); 
+            return game->play();
+        }
+        return userMessage();
+    }
+    catch(bad_alloc){
+        //NEED UNIQUE RETURN VALUE
+    }
+
+    
+    
+    
 }
