@@ -1,12 +1,8 @@
 // lab3.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
-#include <iostream>
 #include <iomanip>
 #include <ostream>
 #include "gameBase.h"
-//#include "lab3.h"
-//#include "usageFunction.h"
 
 using namespace std;
 
@@ -60,6 +56,8 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
 }
 int main(int argc, char* argv[])
 {
+    //shared_ptr<GameBase*> x = make_shared<GameBase*>(checkArg(argc, argv));
+
     GameBase* game = checkArg(argc, argv);
     if (game != 0) {
         return game->play();

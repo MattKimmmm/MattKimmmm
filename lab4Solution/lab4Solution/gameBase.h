@@ -4,6 +4,7 @@
 #include <iostream>
 #include <istream>
 #include <sstream>
+#include <memory>
 #include "gamePiece.h"
 
 //The TicTacToe game class.
