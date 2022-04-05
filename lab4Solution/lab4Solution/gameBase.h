@@ -7,6 +7,23 @@
 #include <memory>
 #include "gamePiece.h"
 
+//Enumeration values for program return values.
+enum returnVal {
+	success,
+	failure,
+	extractFailure,
+	invalidInput,
+	quitGame,
+	drawGame
+};
+
+//Enumeration values for program input check.
+enum programVal {
+	programname,
+	filename,
+	commandLineNum
+};
+
 //The TicTacToe game class.
 class GameBase {
 public:

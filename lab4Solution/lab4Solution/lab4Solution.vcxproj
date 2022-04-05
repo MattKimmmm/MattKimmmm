@@ -145,7 +145,6 @@
     <ClCompile Include="usageFunction.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Lab4\Lab4\Lab4.h" />
     <ClInclude Include="gameBase.h" />
     <ClInclude Include="gamePiece.h" />
   </ItemGroup>
