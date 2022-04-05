@@ -60,17 +60,9 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
 }
 int main(int argc, char* argv[])
 {
-    if (argc != commandLineNum) {
-        cout << "To execute the program, you need two command line arguments." << endl;
-        return userMessage();
-    }
-    else {
-        string filename_check = argv[filename];
-        if (filename_check != "TicTacToe") {
-            cout << "Filename Incorrect." << endl;
-            return userMessage();
-        }
-    }
-    TicTacToe game;
-    return game.play();
+    GameBase* game = checkArg(argc, argv);
+    if (game != 0) {
+        return game->play();
+    }  
+    return userMessage(); 
 }

@@ -44,3 +44,5 @@ public:
 	
 	virtual bool done();
 };
+
+int userMessage();
