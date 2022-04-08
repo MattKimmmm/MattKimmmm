@@ -16,5 +16,6 @@ Work Assignment
 	16. Jinfeng C.
 	17. Daniel R.
 	18. Daniel R. Jinfeng C.
+	20.-23. Daniel R.
 
 	24. Matthew k.
