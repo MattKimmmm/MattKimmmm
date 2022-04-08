@@ -23,7 +23,7 @@ bool GomokuGame::done() {
 	//diagonal
 	for (int i = first_piece_index; i < boardHeight - 4; i += boardWidth) {
 		for (int j = i; j % boardWidth < boardWidth - 4; j++) {
-			if (pieceList[j] != "" && pieceList[j].boardDisplay == pieceList[j + diagonal_factor].boardDisplay ==
+			if (pieceList[j].boardDisplay != "" && pieceList[j].boardDisplay == pieceList[j + diagonal_factor].boardDisplay ==
 				pieceList[j + diagonal_factor * 2].boardDisplay == pieceList[j + diagonal_factor * 3].boardDisplay ==
 				pieceList[j + diagonal_factor * 4].boardDisplay) {
 				winner = pieceList[j].boardDisplay;
