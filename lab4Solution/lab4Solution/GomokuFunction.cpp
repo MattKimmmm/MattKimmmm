@@ -14,9 +14,12 @@ GomokuGame::GomokuGame() {
 (other than the this pointer that's passed implicitly to all non-static methods and operators)
 and has a bool return type. The method should return true if 5 stones of the same color
 are in a row or column or diagonal (otherwise the method should return false.*/
-bool GomokuGame::done() {
+
 
 bool GomokuGame::done() {
+
+	//Temp
+	return false;
 
 }
 
