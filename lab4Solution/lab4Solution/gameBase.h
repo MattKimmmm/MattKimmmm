@@ -52,9 +52,7 @@ protected:
 	unsigned int longestDispLen;//tracks the longest display string length of any piece on the board
 };
 
-GameBase::GameBase() : boardWidth(0), boardHeight(0), piece(""), winner(""), player1({}), player2({}), longestDispLen(0), moves_num(0) {
 
-}
 
 class TicTacToe : public GameBase {
 public:
