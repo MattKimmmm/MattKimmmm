@@ -6,13 +6,13 @@
 using namespace std;
 
 TicTacToe::TicTacToe() {
-	TicTacToe game;
-	game.boardWidth = 5;
-	game.boardHeight = 5;
-	game.piece = "X";
-	game.winner = " ";
-	game.player1 = {};
-	game.player2 = {};
+	//TicTacToe game;
+	boardWidth = 5;
+	boardHeight = 5;
+	piece = "X";
+	winner = " ";
+	player1 = {};
+	player2 = {};
 
 }
 
@@ -118,7 +118,7 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 
 
 				//Updates the longestDispLen variable if the new game piece has a longer length
-				int length = piece.boardDisplay.length(); //A temp variable that keeps the length of the game piece display
+				unsigned int length = static_cast<unsigned int>(piece.length()); //A temp variable that keeps the length of the game piece display
 				if (length > longestDispLen) {
 					longestDispLen = length;
 				}
