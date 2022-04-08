@@ -115,12 +115,19 @@ int main(int argc, char* argv[])
         GameBase* game = checkArg(argc, argv);
 
         if (game != 0) {
+            
+
+            return game->userMessage();
+            
+        }
+        else {
             //Create shared_ptr of the GameBase object
             shared_ptr<GameBase> sharedGameptr = shared_ptr<GameBase>(game);
 
             return game->play();
         }
-        return userMessage();
+        
+        
     }
     catch(bad_alloc){
         //NEED UNIQUE RETURN VALUE
