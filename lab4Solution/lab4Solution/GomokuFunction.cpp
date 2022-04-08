@@ -1,5 +1,7 @@
 #include "gameBase.h"
 
+/*
+
 using namespace std;
 GomokuGame::GomokuGame() {
 	
@@ -14,6 +16,8 @@ GomokuGame::GomokuGame() {
 (other than the this pointer that's passed implicitly to all non-static methods and operators)
 and has a bool return type. The method should return true if 5 stones of the same color
 are in a row or column or diagonal (otherwise the method should return false.*/
+
+/*
 
 bool GomokuGame::done() {
 	unsigned int first_piece_index = 0;
@@ -35,7 +39,7 @@ bool GomokuGame::done() {
 	//horizontal
 	for (int i = first_piece_index; i < boardHeight; i += boardWidth) {
 		for (int j = i; j % boardWidth < boardWidth - 4; j++) {
-			if (pieceList[j].boardDisplay == "" && pieceList[j] == pieceList[j + 1] == pieceList[j + 2] == pieceList[j + 3] == pieceList[j + 4]) {
+			if (pieceList[j].boardDisplay != " " && pieceList[j].boardDisplay == pieceList[j + 1].boardDisplay == pieceList[j + 2].boardDisplay == pieceList[j + 3].boardDisplay == pieceList[j + 4].boardDisplay) {
 				winner = pieceList[j].boardDisplay;
 				return true;
 			}
@@ -45,8 +49,8 @@ bool GomokuGame::done() {
 	//vertical
 	for (int i = first_piece_index; i < boardHeight - 4; i += boardWidth) {
 		for (int j = i; j % boardWidth < boardWidth; j++) {
-			if (pieceList[j].boardDisplay == "" && pieceList[j] == pieceList[j + boardWidth] == pieceList[j + boardWidth * 2] ==
-				pieceList[j + boardWidth * 3] == pieceList[j + boardWidth * 4]) {
+			if (pieceList[j].boardDisplay == "" && pieceList[j].boardDisplay == pieceList[j + boardWidth].boardDisplay == pieceList[j + boardWidth * 2].boardDisplay ==
+				pieceList[j + boardWidth * 3].boardDisplay == pieceList[j + boardWidth * 4].boardDisplay) {
 				winner = pieceList[j].boardDisplay;
 				return true;
 			}
@@ -58,3 +62,6 @@ bool GomokuGame::done() {
 void GomokuGame::print() {
 	cout << *this << endl;
 }
+
+
+*/

@@ -1,10 +1,11 @@
 //#include "lab3.h"
 #include <iostream>
-#include "usageFunction.h"
+
+#include "gameBase.h"
 using namespace std;
 
 //Function to print out user message when the command line argument is invalid.
-int userMessage() {
+int GameBase::userMessage() {
     cout << "Usage: lab3.exe TicTacToe" << endl;
-    return 1;
+    return static_cast<int>(returnVal::incorrectInput);
 }
