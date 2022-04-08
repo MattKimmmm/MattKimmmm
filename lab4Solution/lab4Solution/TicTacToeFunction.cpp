@@ -1,4 +1,4 @@
-#include "gamePiece.h"
+	#include "gamePiece.h"
 #include "gameBase.h"
 //#include "lab3.h"
 #include "gameBase.h"
