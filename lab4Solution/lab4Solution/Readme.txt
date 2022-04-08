@@ -19,3 +19,6 @@ Work Assignment
 	20.-23. Daniel R.
 
 	24. Matthew k.
+
+
+	NEED TO DELETE new GameBase object--Memory leak
