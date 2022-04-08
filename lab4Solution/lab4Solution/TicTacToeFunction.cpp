@@ -5,7 +5,7 @@
 
 using namespace std;
 
-TicTacToe::TicTacToe() {
+TicTacToe::TicTacToe(): GameBase()  {
 	//TicTacToe game;
 	boardWidth = 5;
 	boardHeight = 5;

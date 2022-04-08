@@ -37,6 +37,8 @@ public:
 	int moves_num; //tracks total number of moves made by both players.
 	virtual void print() = 0;
 
+	GameBase();
+
 	
 
 protected:
@@ -49,6 +51,10 @@ protected:
 
 	unsigned int longestDispLen;//tracks the longest display string length of any piece on the board
 };
+
+GameBase::GameBase() : boardWidth(0), boardHeight(0), piece(""), winner(""), player1({}), player2({}), longestDispLen(0) {
+
+}
 
 class TicTacToe : public GameBase {
 public:
