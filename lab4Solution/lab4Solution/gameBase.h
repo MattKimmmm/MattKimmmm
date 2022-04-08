@@ -14,7 +14,8 @@ enum returnVal {
 	extractFailure,
 	invalidInput,
 	quitGame,
-	drawGame
+	drawGame,
+	incorrectInput
 };
 
 //Enumeration values for program input check.
@@ -39,7 +40,7 @@ public:
 
 	GameBase();
 
-	
+	int userMessage();
 
 protected:
 	int boardWidth; 
@@ -65,6 +66,8 @@ public:
 	virtual bool done();
 };
 
+/*
+
 class GomokuGame : public GameBase {
 public:
 	GomokuGame();
@@ -76,3 +79,5 @@ public:
 	virtual bool done();
 };
 int userMessage();
+
+*/
