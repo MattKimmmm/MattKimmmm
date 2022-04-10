@@ -18,16 +18,16 @@ and has a bool return type. The method should return true if 5 stones of the sam
 are in a row or column or diagonal (otherwise the method should return false.*/
 
 
-
 bool GomokuGame::done() {
 	int first_piece_index = 0;
-	int boardsize = boardWidth * boardHeight;
 	size_t diagonal_upper_right = static_cast<size_t>(boardWidth) + 1;
-	size_t diagonal_lower_right = static_cast<size_t>(boardWidth) - 1; //static_cast<size_t>(something)
+	size_t diagonal_lower_right = static_cast<size_t>(boardWidth) - 1; 
 
 	//diagonal to upper right
+	/*iterate through cases for every possible starting piece*/
 	for (int i = first_piece_index; i < boardHeight - 4; i += boardWidth) {
 		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - 4; j++) {
+			//check the consecutive pieces in the path
 			if (pieceList[j].boardDisplay != "" && pieceList[j].boardDisplay == pieceList[j + diagonal_upper_right].boardDisplay &&
 				pieceList[j+ diagonal_upper_right].boardDisplay == pieceList[j + diagonal_upper_right * 2].boardDisplay &&
 				pieceList[j+ diagonal_upper_right *2].boardDisplay == pieceList[j + diagonal_upper_right * 3].boardDisplay &&
@@ -39,6 +39,7 @@ bool GomokuGame::done() {
 	}
 
 	//diagonal to bottom right
+	/*iterate through cases for every possible starting piece*/
 	for (int i = first_piece_index + 4; i < boardHeight; i += boardWidth) {
 		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - 4; j++) {
 			if (pieceList[j].boardDisplay != "" && pieceList[j].boardDisplay == pieceList[j - diagonal_lower_right].boardDisplay && pieceList[j - diagonal_lower_right].boardDisplay ==
@@ -51,6 +52,7 @@ bool GomokuGame::done() {
 	}
 
 	//horizontal
+	/*iterate through cases for every possible starting piece*/
 	for (int i = first_piece_index; i < boardHeight; i += boardWidth) {
 		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - 4; j++) {
 			if (pieceList[j].boardDisplay != " " && pieceList[j].boardDisplay == pieceList[j+1].boardDisplay &&  
@@ -63,6 +65,7 @@ bool GomokuGame::done() {
 	}
 
 	//vertical
+	/*iterate through cases for every possible starting piece*/
 	for (int i = first_piece_index; i < boardHeight - 4; i += boardWidth) {
 		for (size_t j = i; j % boardWidth < boardWidth; j++) {
 			if (pieceList[j].boardDisplay == "" && pieceList[j].boardDisplay == pieceList[j + boardWidth].boardDisplay &&
@@ -84,22 +87,25 @@ parameters(other than the this pointer that's passed implicitly to all non-stati
 and operators) and has a bool return type. The method should return true if there is no
 path left that can lead to 5 stones in a row, otherwise the method should return false.*/
 bool GomokuGame::draw() {
-	int first_piece_index = 0;
-	int diagonal_factor = boardWidth + 1;
+	size_t first_piece_index = 0;
+	size_t diagonal_upper_right = static_cast<size_t>(boardWidth) + 1;
+	size_t diagonal_lower_right = static_cast<size_t>(boardWidth) - 1;
 
 	//horizontal check for black
-	for (int i = first_piece_index; i < boardHeight; i += boardWidth) {
-		for (int j = i; j % boardWidth < boardWidth - 4; j++) {
-			if (pieceList[j].boardDisplay != "W" && pieceList[j+1].boardDisplay != "W" && pieceList[j+2].boardDisplay != "W" &&
-				pieceList[j+3].boardDisplay != "W" && pieceList[j+4].boardDisplay != "W") {
+	for (size_t i = first_piece_index; i < boardHeight; i += boardWidth) {
+		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - 4; j++) {
+			//starting from the initial piece, check all 5 spots in the path if there is a white stone.
+			//Path is valid if there are no white stones
+			if (pieceList[j].boardDisplay != "W" && pieceList[j + 1].boardDisplay != "W" && pieceList[j + 2].boardDisplay != "W" &&
+				pieceList[j + 3].boardDisplay != "W" && pieceList[j + 4].boardDisplay != "W") {
 				return false;
 			}
 		}
 	}
 
 	//horizontal check for white
-	for (int i = first_piece_index; i < boardHeight; i += boardWidth) {
-		for (int j = i; j % boardWidth < boardWidth - 4; j++) {
+	for (size_t i = first_piece_index; i < boardHeight; i += boardWidth) {
+		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - 4; j++) {
 			if (pieceList[j].boardDisplay != "B" && pieceList[j + 1].boardDisplay != "B" && pieceList[j + 2].boardDisplay != "B" &&
 				pieceList[j + 3].boardDisplay != "B" && pieceList[j + 4].boardDisplay != "B") {
 				return false;
@@ -107,18 +113,80 @@ bool GomokuGame::draw() {
 		}
 	}
 
-	//diagonal to upper right, 
+	//vertical check for black
 	for (int i = first_piece_index; i < boardHeight - 4; i += boardWidth) {
-		for (int j = i; j % boardWidth < boardWidth - 4; j++) {
-			if (pieceList[j].boardDisplay != "" && pieceList[j].boardDisplay == pieceList[j + diagonal_factor].boardDisplay &&
-				pieceList[j + diagonal_factor].boardDisplay == pieceList[j + diagonal_factor * 2].boardDisplay &&
-				pieceList[j + diagonal_factor * 2].boardDisplay == pieceList[j + diagonal_factor * 3].boardDisplay &&
-				pieceList[j + diagonal_factor * 3].boardDisplay == pieceList[j + diagonal_factor * 4].boardDisplay) {
-				winner = pieceList[j].boardDisplay;
-				return true;
+		for (size_t j = i; j % boardWidth < boardWidth; j++) {
+			if (pieceList[j].boardDisplay != "W" && pieceList[j + boardWidth].boardDisplay != "W" &&
+				pieceList[j + 2 * static_cast<size_t>(boardWidth)].boardDisplay != "W" &&
+				pieceList[j + 3 * static_cast<size_t>(boardWidth)].boardDisplay != "W" &&
+				pieceList[j + 4 * static_cast<size_t>(boardWidth)].boardDisplay != "W") {
+				return false;
 			}
 		}
 	}
+
+	//vertical check for white
+	for (int i = first_piece_index; i < boardHeight - 4; i += boardWidth) {
+		for (size_t j = i; j % boardWidth < boardWidth; j++) {
+			if (pieceList[j].boardDisplay != "B" && pieceList[j + boardWidth].boardDisplay != "B" && 
+				pieceList[j + 2* static_cast<size_t>(boardWidth)].boardDisplay != "B" &&
+				pieceList[j + 3* static_cast<size_t>(boardWidth)].boardDisplay != "B" &&
+				pieceList[j + 4* static_cast<size_t>(boardWidth)].boardDisplay != "B") {
+				return false;
+			}
+		}
+	}
+
+	//diagonal to upper right, black
+	for (int i = first_piece_index; i < boardHeight - 4; i += boardWidth) {
+		for (int j = i; j % boardWidth < boardWidth - 4; j++) {
+			if (pieceList[j].boardDisplay != "W" && pieceList[j + diagonal_upper_right].boardDisplay != "W" &&
+				pieceList[j + 2 * diagonal_upper_right].boardDisplay != "W" &&
+				pieceList[j + 3 * diagonal_upper_right].boardDisplay != "W" &&
+				pieceList[j + 4 * diagonal_upper_right].boardDisplay != "W") {
+				return false;
+			}
+		}
+	}
+
+	//diagonal to upper right, white
+	for (int i = first_piece_index; i < boardHeight - 4; i += boardWidth) {
+		for (int j = i; j % boardWidth < boardWidth - 4; j++) {
+			if (pieceList[j].boardDisplay != "B" && pieceList[j + diagonal_upper_right].boardDisplay != "B" && 
+				pieceList[j + 2* diagonal_upper_right].boardDisplay != "B" &&
+				pieceList[j + 3* diagonal_upper_right].boardDisplay != "B" && 
+				pieceList[j + 4* diagonal_upper_right].boardDisplay != "B") {
+				return false;
+			}
+		}
+	}
+
+	//diagonal to bottom right, black
+	for (int i = first_piece_index; i < boardHeight - 4; i += boardWidth) {
+		for (int j = i; j % boardWidth < boardWidth - 4; j++) {
+			if (pieceList[j].boardDisplay != "W" && pieceList[j + diagonal_lower_right].boardDisplay != "W" &&
+				pieceList[j + 2 * diagonal_lower_right].boardDisplay != "W" &&
+				pieceList[j + 3 * diagonal_lower_right].boardDisplay != "W" &&
+				pieceList[j + 4 * diagonal_lower_right].boardDisplay != "W") {
+				return false;
+			}
+		}
+	}
+
+	//diagonal to upper right, white
+	for (int i = first_piece_index; i < boardHeight - 4; i += boardWidth) {
+		for (int j = i; j % boardWidth < boardWidth - 4; j++) {
+			if (pieceList[j].boardDisplay != "B" && pieceList[j + diagonal_lower_right].boardDisplay != "B" &&
+				pieceList[j + 2 * diagonal_lower_right].boardDisplay != "B" &&
+				pieceList[j + 3 * diagonal_lower_right].boardDisplay != "B" &&
+				pieceList[j + 4 * diagonal_lower_right].boardDisplay != "B") {
+				return false;
+			}
+		}
+	}
+
+	// no possible path for a winning condition
+	return true;
 }
 
 int GomokuGame::turn() {
