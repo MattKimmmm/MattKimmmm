@@ -66,7 +66,7 @@ public:
 	virtual bool done();
 };
 
-/*
+
 
 class GomokuGame : public GameBase {
 public:
@@ -80,4 +80,3 @@ public:
 };
 int userMessage();
 
-*/

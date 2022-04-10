@@ -1,6 +1,6 @@
 #include "gameBase.h"
 
-/*
+
 
 using namespace std;
 GomokuGame::GomokuGame() {
@@ -17,7 +17,7 @@ GomokuGame::GomokuGame() {
 and has a bool return type. The method should return true if 5 stones of the same color
 are in a row or column or diagonal (otherwise the method should return false.*/
 
-/*
+
 
 bool GomokuGame::done() {
 	unsigned int first_piece_index = 0;

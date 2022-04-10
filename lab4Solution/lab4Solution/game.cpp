@@ -7,7 +7,7 @@
 
 using namespace std;
 
-//TicTacToe::TicTacToe() :boardWidth(5), boardHeight(5), piece('X'), playerX({}), playerO({}), moves_num(0), winner(' ') {}
+TicTacToe::TicTacToe() :boardWidth(5), boardHeight(5), piece('X'), playerX({}), playerO({}), moves_num(0), winner(' ') {}
 
 static GameBase* checkArg(int argc, char* argv[]) {
     GameBase* game = 0;
@@ -16,12 +16,12 @@ static GameBase* checkArg(int argc, char* argv[]) {
             game = new TicTacToe();
         }
 
-        /*
+        
         else if (argv[1] == "Gomoku") {
             game = new GomokuGame();
         }
 
-        */
+        
     }
     return game;
 } 
@@ -71,7 +71,7 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
     return out;
 }
 
-/*
+
 
 ostream& operator<<(ostream& out, const GomokuGame& game) {
     //if there has been no moves made by any players, then fill the game board with empty cells.
@@ -93,7 +93,7 @@ ostream& operator<<(ostream& out, const GomokuGame& game) {
         cout << i << ""; //print out vertical label
         for (int j = 0; j <= game.boardWidth - 1; j++) {
             int index = game.boardWidth * i + j;
-            using setw manipulator for the spacings between displayed pieces
+            //using setw manipulator for the spacings between displayed pieces
             cout << setw(game.longestDispLen) << game.pieceList[index].boardDisplay;
         }
         // same spacing for displayed pieces for horizontal alignment
@@ -109,7 +109,7 @@ ostream& operator<<(ostream& out, const GomokuGame& game) {
     }
     return out;
 }
-*/
+
 int main(int argc, char* argv[])
 {
     
