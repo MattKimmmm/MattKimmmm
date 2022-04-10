@@ -26,6 +26,15 @@ Work Assignment
 	NEED TO DELETE new GameBase object--Memory leak
 
 
+
+Errors/Warnings:
+	
+	
+	E0392	member function "TicTacToe::turn" may not be redeclared outside its class	
+		Solved by adding a closing bracket to the previous code segment
+	NEED TO DELETE new GameBase object--Memory leak
+
+
 	Warnings:
 	C26451Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. 
 	Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).	

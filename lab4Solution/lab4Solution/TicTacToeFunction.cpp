@@ -76,6 +76,17 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 	string coordinate;
 	stringstream temp(userInput);
 	getline(temp, coordinate);
+	int maxCoor = 0;//keep track of the max value of a possible coordinate, changes depend on game type; e.g. maxCoor= 19 in Gomoku
+
+	int commaPos = -1;//tracks where the comma is in the input string (if present)
+
+	//Determine the max value of input coordinates based on game type
+	if ((piece == "X") || ((piece == "O"))) {
+		maxCoor = 3;
+	}
+	else if ((piece == "B") || (piece == "W")) {
+		maxCoor = 19;
+	}
 
 	//check if the user input is quit, which then quits the game.
 	if (coordinate == "quit")
@@ -83,20 +94,23 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 		cout << "Player " << piece << " quit the game" << endl;
 		return quitGame;
 	}
-	//check if the coordinate input is 3, has comma in the middle, and each coordinate value is an integer.
-	else if (coordinate.length() != 3 || coordinate.at(1) != ',' || !isdigit(coordinate.at(0)) || !isdigit(coordinate.at(2)))
-	{
-		cout << "Invalid Input Format, x and y coordinates must be between 1 - 3. Example: 1,1" << endl;
-		prompt(x, y);
-	}
-	else
-	{
-		coordinate.at(1) = ' '; // change comma to space to pass the string to stringstream.
+
+	//find the position of comma
+	commaPos = coordinate.find(',');
+
+	//Checks if there is a comma in the input string; if so, execute codes
+	if (commaPos != -1) {
+
+
+		coordinate.at(commaPos) = ' '; // change comma to space to pass the string to stringstream.
+
 		istringstream iss(coordinate);
+
+
 		if (iss >> x && iss >> y) {
 			int index = boardWidth * y + x;
 			//checks if the inputted coordinates are out of bounds.
-			if (x < 1 || x > 3 || y < 1 || y > 3) {
+			if (x < 1 || x > maxCoor || y < 1 || y > maxCoor) {
 				cout << "Coordinate out of bounds" << endl;
 				prompt(x, y);
 			}
@@ -114,6 +128,12 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 					pieceList[index].boardDisplay = "O";
 					player2.push_back(make_pair(x, y));
 				}
+				else if (piece == "B") {
+					pieceList[index].boardDisplay = "B";
+				}
+				else {
+					pieceList[index].boardDisplay = "W";
+				}
 
 
 
@@ -122,15 +142,19 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 				if (length > longestDispLen) {
 					longestDispLen = length;
 				}
+
+				return success;
 			}
 		}
 		else {
 			cout << "coordinate extraction failure" << endl;
 			return extractFailure;
 		}
+
+
 	}
-	return success;
 }
+
 
 //Prompts game to change player turn.
 int TicTacToe::turn() {
