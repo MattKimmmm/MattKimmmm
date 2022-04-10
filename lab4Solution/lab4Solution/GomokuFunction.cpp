@@ -23,7 +23,7 @@ bool GomokuGame::done() {
 	int first_piece_index = 0;
 	int boardsize = boardWidth * boardHeight;
 	size_t diagonal_upper_right = boardWidth + 1;
-	size_t diagonal_lower_right = boardWidth - 1;
+	size_t diagonal_lower_right = boardWidth - 1; //static_cast<size_t>(something)
 
 	//diagonal to upper right
 	for (int i = first_piece_index; i < boardHeight - 4; i += boardWidth) {
