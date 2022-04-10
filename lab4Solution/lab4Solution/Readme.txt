@@ -17,9 +17,10 @@ Work Assignment
 	17. Daniel R.
 	18. Daniel R. Jinfeng C.
 	20.-23. Daniel R.
-
 	24. Matthew K. Daniel R.
 	25. Matthew k.
+	26. Jinfeng C.
+
 
 
 	NEED TO DELETE new GameBase object--Memory leak
