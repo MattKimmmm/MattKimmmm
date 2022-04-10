@@ -12,7 +12,7 @@ using namespace std;
 static GameBase* checkArg(int argc, char* argv[]) {
     GameBase* game = 0;
     if (argc == 2) {
-        if (argv[1] == "TicTacToe") {
+        if (strcmp( "TicTacToe", argv[1]) == 0) {
             game = new TicTacToe();
         }
 
@@ -41,7 +41,7 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
             {
                 int index = game.boardWidth * i + j;
                 gamePiece piece;
-                piece.boardDisplay = ' ';
+                piece.boardDisplay = " ";
                 game.pieceList.push_back(piece);
             }
         }
@@ -56,16 +56,18 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
             cout << setw(game.longestDispLen) << game.pieceList[index].boardDisplay;
         }
         // same spacing for displayed pieces for horizontal alignment
-        for (int i = 0; i < game.boardHeight - 1; i++) {
+        
+        //for (int i = 0; i < game.boardHeight - 1; i++) {
             cout << endl;
-        }
+        //}
     }
 
     //print out horizontal label
     cout << 0;
     for (int i = 1; i <= game.boardWidth; i++) {
-        cout << setw(game.longestDispLen) << i;
+        cout << setw(2) << i;
     }
+    cout << endl;
     return out;
 }
 
@@ -116,15 +118,15 @@ int main(int argc, char* argv[])
 
         if (game != 0) {
             
-
-            return game->userMessage();
-            
-        }
-        else {
             //Create shared_ptr of the GameBase object
             shared_ptr<GameBase> sharedGameptr = shared_ptr<GameBase>(game);
 
             return game->play();
+            
+            
+        }
+        else {
+            return game->userMessage();
         }
         
         
