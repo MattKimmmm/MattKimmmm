@@ -24,12 +24,24 @@ bool GomokuGame::done() {
 	unsigned int boardsize = boardWidth * boardHeight;
 	unsigned int diagonal_factor = boardWidth + 1;
 
-	//diagonal
+	//diagonal to upper right
 	for (int i = first_piece_index; i < boardHeight - 4; i += boardWidth) {
 		for (int j = i; j % boardWidth < boardWidth - 4; j++) {
 			if (pieceList[j].boardDisplay != "" && pieceList[j].boardDisplay == pieceList[j + diagonal_factor].boardDisplay && pieceList[j+diagonal_factor].boardDisplay == 
 				pieceList[j + diagonal_factor * 2].boardDisplay && pieceList[j+diagonal_factor*2].boardDisplay == pieceList[j + diagonal_factor * 3].boardDisplay &&
 				pieceList[j+diagonal_factor *3].boardDisplay == pieceList[j + diagonal_factor * 4].boardDisplay) {
+				winner = pieceList[j].boardDisplay;
+				return true;
+			}
+		}
+	}
+
+	//diagonal to bottom right
+	for (int i = first_piece_index + 4; i < boardHeight; i += boardWidth) {
+		for (int j = i; j % boardWidth < boardWidth - 4; j++) {
+			if (pieceList[j].boardDisplay != "" && pieceList[j].boardDisplay == pieceList[j - diagonal_factor].boardDisplay && pieceList[j - diagonal_factor].boardDisplay ==
+				pieceList[j - diagonal_factor * 2].boardDisplay && pieceList[j - diagonal_factor * 2].boardDisplay == pieceList[j - diagonal_factor * 3].boardDisplay &&
+				pieceList[j - diagonal_factor * 3].boardDisplay == pieceList[j - diagonal_factor * 4].boardDisplay) {
 				winner = pieceList[j].boardDisplay;
 				return true;
 			}
@@ -61,9 +73,57 @@ bool GomokuGame::done() {
 	}
 }
 
-
+int GomokuGame::turn() {
+	unsigned int x_coor = 0;
+	unsigned int y_coor = 0;
+	int promptResult;
+	if (piece == "B") {
+		cout << "current player: B" << endl;
+		promptResult = prompt(x_coor, y_coor);
+		if (promptResult == success) {
+			cout << *this << endl; //print board
+			cout << "Player B: "; //print player's past moves.
+			for (unsigned int i = 0; i < player1.size(); i++) {
+				cout << player1[i].first << "," << player1[i].second << "; ";
+			}
+			cout << endl;
+			piece = "W"; // switch player turn
+			moves_num++; //increment total moves played by both players.
+		}
+		else {
+			return promptResult;
+		}
+	}
+	else if (piece == "W") {
+		cout << "current player: W" << endl;
+		promptResult = prompt(x_coor, y_coor);
+		if (promptResult == success) {
+			cout << *this << endl;
+			cout << "Player W: ";
+			for (unsigned int i = 0; i < player2.size(); i++) {
+				cout << player2[i].first << "," << player2[i].second << "; ";
+			}
+			cout << endl;
+			piece = "B";
+			moves_num++;
+		}
+		else {
+			//tracks whether a player quit game, the program failed to extract coordinates, or if the coordinate was valid.
+			return promptResult;
+		}
+	}
+	return success;
+}
 void GomokuGame::print() {
 	cout << *this << endl;
 }
 
 
+
+/*Declare and define a public virtual (non-static) draw() method that takes no
+parameters(other than the this pointer that's passed implicitly to all non-static methods
+and operators) and has a bool return type. The method should return true if there is no
+path left that can lead to 5 stones in a row, otherwise the method should return false.*/
+bool GomokuGame::draw() {
+
+}
