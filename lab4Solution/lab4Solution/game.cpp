@@ -93,7 +93,7 @@ ostream& operator<<(ostream& out, const GomokuGame& game) {
         cout << i << ""; //print out vertical label
         for (int j = 0; j <= game.boardWidth - 1; j++) {
             int index = game.boardWidth * i + j;
-            using setw manipulator for the spacings between displayed pieces
+            //using setw manipulator for the spacings between displayed pieces
             cout << setw(game.longestDispLen) << game.pieceList[index].boardDisplay;
         }
         // same spacing for displayed pieces for horizontal alignment
