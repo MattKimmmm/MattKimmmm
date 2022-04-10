@@ -24,12 +24,24 @@ bool GomokuGame::done() {
 	unsigned int boardsize = boardWidth * boardHeight;
 	unsigned int diagonal_factor = boardWidth + 1;
 
-	//diagonal
+	//diagonal to upper right
 	for (int i = first_piece_index; i < boardHeight - 4; i += boardWidth) {
 		for (int j = i; j % boardWidth < boardWidth - 4; j++) {
 			if (pieceList[j].boardDisplay != "" && pieceList[j].boardDisplay == pieceList[j + diagonal_factor].boardDisplay && pieceList[j+diagonal_factor].boardDisplay == 
 				pieceList[j + diagonal_factor * 2].boardDisplay && pieceList[j+diagonal_factor*2].boardDisplay == pieceList[j + diagonal_factor * 3].boardDisplay &&
 				pieceList[j+diagonal_factor *3].boardDisplay == pieceList[j + diagonal_factor * 4].boardDisplay) {
+				winner = pieceList[j].boardDisplay;
+				return true;
+			}
+		}
+	}
+
+	//diagonal to bottom right
+	for (int i = first_piece_index + 4; i < boardHeight; i += boardWidth) {
+		for (int j = i; j % boardWidth < boardWidth - 4; j++) {
+			if (pieceList[j].boardDisplay != "" && pieceList[j].boardDisplay == pieceList[j - diagonal_factor].boardDisplay && pieceList[j - diagonal_factor].boardDisplay ==
+				pieceList[j - diagonal_factor * 2].boardDisplay && pieceList[j - diagonal_factor * 2].boardDisplay == pieceList[j - diagonal_factor * 3].boardDisplay &&
+				pieceList[j - diagonal_factor * 3].boardDisplay == pieceList[j - diagonal_factor * 4].boardDisplay) {
 				winner = pieceList[j].boardDisplay;
 				return true;
 			}
@@ -67,7 +79,6 @@ void GomokuGame::print() {
 }
 
 
-*/
 
 /*Declare and define a public virtual (non-static) draw() method that takes no
 parameters(other than the this pointer that's passed implicitly to all non-static methods
