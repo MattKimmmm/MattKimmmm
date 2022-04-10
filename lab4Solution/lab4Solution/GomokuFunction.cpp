@@ -92,7 +92,7 @@ int GomokuGame::turn() {
 				cout << player2[i].first << "," << player2[i].second << "; ";
 			}
 			cout << endl;
-			piece = "W";
+			piece = "B";
 			moves_num++;
 		}
 		else {
