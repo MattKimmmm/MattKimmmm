@@ -15,7 +15,8 @@ enum returnVal {
 	invalidInput,
 	quitGame,
 	drawGame,
-	incorrectInput
+	incorrectInput,
+	bad_allocation
 };
 
 //Enumeration values for program input check.

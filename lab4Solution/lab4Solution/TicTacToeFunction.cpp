@@ -76,9 +76,9 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 	string coordinate;
 	stringstream temp(userInput);
 	getline(temp, coordinate);
-	int maxCoor = 0;//keep track of the max value of a possible coordinate, changes depend on game type; e.g. maxCoor= 19 in Gomoku
+	size_t maxCoor = 0;//keep track of the max value of a possible coordinate, changes depend on game type; e.g. maxCoor= 19 in Gomoku
 
-	int commaPos = -1;//tracks where the comma is in the input string (if present)
+	size_t commaPos = -1;//tracks where the comma is in the input string (if present)
 
 	//Determine the max value of input coordinates based on game type
 	if ((piece == "X") || ((piece == "O"))) {
@@ -153,6 +153,7 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 
 
 	}
+	return failure;
 }
 
 

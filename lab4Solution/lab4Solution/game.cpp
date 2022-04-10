@@ -7,16 +7,7 @@
 
 using namespace std;
 
-TicTacToe::TicTacToe()  {
-    boardWidth = 5; 
-    boardHeight = 5; 
-    piece = "X";
-    //playerX = {};
-    playerO = {};
-    moves_num = 0; 
-    winner = ' ';
 
-}
 
 static GameBase* checkArg(int argc, char* argv[]) {
     GameBase* game = 0;
@@ -137,11 +128,13 @@ int main(int argc, char* argv[])
         else {
             return game->userMessage();
         }
+
+        delete game;
         
         
     }
     catch(bad_alloc){
-        //NEED UNIQUE RETURN VALUE
+        return bad_allocation;
     }
 
     
