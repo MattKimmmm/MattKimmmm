@@ -110,7 +110,7 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 		if (iss >> x && iss >> y) {
 			int index = boardWidth * y + x;
 			//checks if the inputted coordinates are out of bounds.
-			if (x < 1 || x > 3 || y < 1 || y > 3) {
+			if (x < 1 || x > maxCoor || y < 1 || y > maxCoor) {
 				cout << "Coordinate out of bounds" << endl;
 				prompt(x, y);
 			}
@@ -128,6 +128,12 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 					pieceList[index].boardDisplay = "O";
 					player2.push_back(make_pair(x, y));
 				}
+				else if (piece == "B") {
+					pieceList[index].boardDisplay = "B";
+				}
+				else {
+					pieceList[index].boardDisplay = "W";
+				}
 
 
 
@@ -136,6 +142,8 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 				if (length > longestDispLen) {
 					longestDispLen = length;
 				}
+
+				return success;
 			}
 		}
 		else {
@@ -143,25 +151,10 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 			return extractFailure;
 		}
 
-		return success;//SHOULD IT BE HERE??
+		
 	}
 	
-	//If the comma is not found, prompt for input again
-	else {
-		cout << "Invalid Input Format: Example: 1,1" << endl;
-		prompt(x, y);
-	}
 
-
-	//check if the coordinate input is 3, has comma in the middle, and each coordinate value is an integer.
-
-	
-	else
-	{
-		
-		
-		
-}
 
 //Prompts game to change player turn.
 int TicTacToe::turn() {
