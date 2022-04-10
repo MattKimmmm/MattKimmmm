@@ -22,12 +22,12 @@ are in a row or column or diagonal (otherwise the method should return false.*/
 bool GomokuGame::done() {
 	int first_piece_index = 0;
 	int boardsize = boardWidth * boardHeight;
-	size_t diagonal_upper_right = static_cast<size_t>(boardWidth + 1);
-	size_t diagonal_lower_right = static_cast<size_t>(boardWidth - 1); //static_cast<size_t>(something)
+	size_t diagonal_upper_right = static_cast<size_t>(boardWidth) + 1;
+	size_t diagonal_lower_right = static_cast<size_t>(boardWidth) - 1; //static_cast<size_t>(something)
 
 	//diagonal to upper right
 	for (int i = first_piece_index; i < boardHeight - 4; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth - 4); j++) {
+		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - 4; j++) {
 			if (pieceList[j].boardDisplay != "" && pieceList[j].boardDisplay == pieceList[j + diagonal_upper_right].boardDisplay &&
 				pieceList[j+ diagonal_upper_right].boardDisplay == pieceList[j + diagonal_upper_right * 2].boardDisplay &&
 				pieceList[j+ diagonal_upper_right *2].boardDisplay == pieceList[j + diagonal_upper_right * 3].boardDisplay &&
@@ -40,7 +40,7 @@ bool GomokuGame::done() {
 
 	//diagonal to bottom right
 	for (int i = first_piece_index + 4; i < boardHeight; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth - 4); j++) {
+		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - 4; j++) {
 			if (pieceList[j].boardDisplay != "" && pieceList[j].boardDisplay == pieceList[j - diagonal_lower_right].boardDisplay && pieceList[j - diagonal_lower_right].boardDisplay ==
 				pieceList[j - diagonal_lower_right * 2].boardDisplay && pieceList[j - diagonal_lower_right * 2].boardDisplay == pieceList[j - diagonal_lower_right * 3].boardDisplay &&
 				pieceList[j - diagonal_lower_right * 3].boardDisplay == pieceList[j - diagonal_lower_right * 4].boardDisplay) {
@@ -52,7 +52,7 @@ bool GomokuGame::done() {
 
 	//horizontal
 	for (int i = first_piece_index; i < boardHeight; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth - 4); j++) {
+		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - 4; j++) {
 			if (pieceList[j].boardDisplay != " " && pieceList[j].boardDisplay == pieceList[j+1].boardDisplay &&  
 				pieceList[j + 1].boardDisplay == pieceList[j + 2].boardDisplay && pieceList[j+2].boardDisplay ==  pieceList[j + 3].boardDisplay
 				&& pieceList[j+3].boardDisplay == pieceList[j + 4].boardDisplay) {
@@ -66,9 +66,9 @@ bool GomokuGame::done() {
 	for (int i = first_piece_index; i < boardHeight - 4; i += boardWidth) {
 		for (size_t j = i; j % boardWidth < boardWidth; j++) {
 			if (pieceList[j].boardDisplay == "" && pieceList[j].boardDisplay == pieceList[j + boardWidth].boardDisplay &&
-				pieceList[j+boardWidth].boardDisplay ==  pieceList[j + static_cast<size_t>(boardWidth * 2)].boardDisplay && 
-				pieceList[j+ static_cast<size_t>(boardWidth * 2)].boardDisplay == pieceList[j + static_cast<size_t>(boardWidth * 3)].boardDisplay &&
-				pieceList[j+ static_cast<size_t>(boardWidth * 3)].boardDisplay == pieceList[j + static_cast<size_t>(boardWidth * 4)].boardDisplay) {
+				pieceList[j+boardWidth].boardDisplay ==  pieceList[j + static_cast<size_t>(boardWidth) * 2].boardDisplay && 
+				pieceList[j+ static_cast<size_t>(boardWidth) * 2].boardDisplay == pieceList[j + static_cast<size_t>(boardWidth) * 3].boardDisplay &&
+				pieceList[j+ static_cast<size_t>(boardWidth) * 3].boardDisplay == pieceList[j + static_cast<size_t>(boardWidth) * 4].boardDisplay) {
 				winner = pieceList[j].boardDisplay;
 				return true;
 			}
