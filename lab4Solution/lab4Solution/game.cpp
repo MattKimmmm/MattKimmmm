@@ -7,7 +7,16 @@
 
 using namespace std;
 
-TicTacToe::TicTacToe() :boardWidth(5), boardHeight(5), piece('X'), playerX({}), playerO({}), moves_num(0), winner(' ') {}
+TicTacToe::TicTacToe()  {
+    boardWidth = 5; 
+    boardHeight = 5; 
+    piece = "X";
+    //playerX = {};
+    playerO = {};
+    moves_num = 0; 
+    winner = ' ';
+
+}
 
 static GameBase* checkArg(int argc, char* argv[]) {
     GameBase* game = 0;
