@@ -70,3 +70,6 @@ void GomokuGame::print() {
 parameters(other than the this pointer that's passed implicitly to all non-static methods
 and operators) and has a bool return type. The method should return true if there is no
 path left that can lead to 5 stones in a row, otherwise the method should return false.*/
+bool GomokuGame::draw() {
+
+}
