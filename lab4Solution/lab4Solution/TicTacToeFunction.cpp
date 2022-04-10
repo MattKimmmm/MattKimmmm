@@ -76,6 +76,15 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 	string coordinate;
 	stringstream temp(userInput);
 	getline(temp, coordinate);
+	int maxCoor = 0;//keep track of the max value of a possible coordinate, changes depend on game type; e.g. maxCoor= 19 in Gomoku
+
+	//Determine the max value of input coordinates based on game type
+	if ((piece == "X") || ((piece == "O"))) {
+		maxCoor = 3;
+	}
+	else if ((piece == "B") || (piece == "W")) {
+		maxCoor = 19;
+	}
 
 	//check if the user input is quit, which then quits the game.
 	if (coordinate == "quit")
@@ -84,6 +93,7 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 		return quitGame;
 	}
 	//check if the coordinate input is 3, has comma in the middle, and each coordinate value is an integer.
+
 	else if (coordinate.length() != 3 || coordinate.at(1) != ',' || !isdigit(coordinate.at(0)) || !isdigit(coordinate.at(2)))
 	{
 		cout << "Invalid Input Format, x and y coordinates must be between 1 - 3. Example: 1,1" << endl;
