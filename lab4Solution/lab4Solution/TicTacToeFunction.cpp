@@ -78,6 +78,8 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 	getline(temp, coordinate);
 	int maxCoor = 0;//keep track of the max value of a possible coordinate, changes depend on game type; e.g. maxCoor= 19 in Gomoku
 
+	int commaPos = -1;//tracks where the comma is in the input string (if present)
+
 	//Determine the max value of input coordinates based on game type
 	if ((piece == "X") || ((piece == "O"))) {
 		maxCoor = 3;
@@ -92,6 +94,17 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 		cout << "Player " << piece << " quit the game" << endl;
 		return quitGame;
 	}
+
+	//find the position of comma
+	commaPos = userInput.find(',');
+
+	//If the comma is not found, prompt for input again
+	if (commaPos == -1) {
+		cout << "Invalid Input Format: Example: 1,1" << endl;
+		prompt(x, y);
+	}
+
+
 	//check if the coordinate input is 3, has comma in the middle, and each coordinate value is an integer.
 
 	else if (coordinate.length() != 3 || coordinate.at(1) != ',' || !isdigit(coordinate.at(0)) || !isdigit(coordinate.at(2)))
