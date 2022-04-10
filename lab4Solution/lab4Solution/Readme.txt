@@ -24,7 +24,8 @@ Work Assignment
 
 
 
-	NEED TO DELETE new GameBase object--Memory leak
+	NEED TO SOLVE:
+			WHY need to type "quit" twice to quit the game? Check logic in prompt()
 
 
 

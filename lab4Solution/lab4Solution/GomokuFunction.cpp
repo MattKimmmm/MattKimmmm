@@ -84,6 +84,9 @@ parameters(other than the this pointer that's passed implicitly to all non-stati
 and operators) and has a bool return type. The method should return true if there is no
 path left that can lead to 5 stones in a row, otherwise the method should return false.*/
 bool GomokuGame::draw() {
+
+	
+
 	int first_piece_index = 0;
 	int diagonal_factor = boardWidth + 1;
 
@@ -119,6 +122,9 @@ bool GomokuGame::draw() {
 			}
 		}
 	}
+
+
+	
 }
 
 int GomokuGame::turn() {
