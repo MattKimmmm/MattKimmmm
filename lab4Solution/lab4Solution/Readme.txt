@@ -33,12 +33,16 @@ Errors/Warnings:
 	
 	E0392	member function "TicTacToe::turn" may not be redeclared outside its class	
 		Solved by adding a closing bracket to the previous code segment
-	NEED TO DELETE new GameBase object--Memory leak
+	
 
 
-	Warnings:
-	C26451Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. 
-	Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).	
-	lab4Solution	C:\Users\Matthew Kim\Desktop\hw\332\lab4-returncode0\lab4Solution\lab4Solution\GomokuFunction.cpp 30	
 
-	Errors:
+	C26451  Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. 
+			Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).	
+		Solved by static_cast to size_t
+
+
+	
+	E0020	identifier "playerO" is undefined
+		Solved by declaring the member variable and defined it in the constructor body
+
