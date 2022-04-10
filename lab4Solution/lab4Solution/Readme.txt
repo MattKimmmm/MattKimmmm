@@ -24,3 +24,11 @@ Work Assignment
 
 
 	NEED TO DELETE new GameBase object--Memory leak
+
+
+
+Errors/Warnings:
+	
+	
+	E0392	member function "TicTacToe::turn" may not be redeclared outside its class	
+		Solved by adding a closing bracket to the previous code segment

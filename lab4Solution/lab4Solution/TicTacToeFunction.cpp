@@ -94,14 +94,14 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 		cout << "Player " << piece << " quit the game" << endl;
 		return quitGame;
 	}
-	
+
 	//find the position of comma
 	commaPos = coordinate.find(',');
 
 	//Checks if there is a comma in the input string; if so, execute codes
 	if (commaPos != -1) {
 
-		
+
 		coordinate.at(commaPos) = ' '; // change comma to space to pass the string to stringstream.
 
 		istringstream iss(coordinate);
@@ -151,9 +151,9 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 			return extractFailure;
 		}
 
-		
+
 	}
-	
+}
 
 
 //Prompts game to change player turn.
