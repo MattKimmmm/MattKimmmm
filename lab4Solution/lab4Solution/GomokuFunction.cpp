@@ -65,3 +65,8 @@ void GomokuGame::print() {
 
 
 */
+
+/*Declare and define a public virtual (non-static) draw() method that takes no
+parameters(other than the this pointer that's passed implicitly to all non-static methods
+and operators) and has a bool return type. The method should return true if there is no
+path left that can lead to 5 stones in a row, otherwise the method should return false.*/
