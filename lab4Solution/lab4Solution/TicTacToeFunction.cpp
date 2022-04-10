@@ -94,28 +94,19 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 		cout << "Player " << piece << " quit the game" << endl;
 		return quitGame;
 	}
-
+	
 	//find the position of comma
-	commaPos = userInput.find(',');
+	commaPos = coordinate.find(',');
 
-	//If the comma is not found, prompt for input again
-	if (commaPos == -1) {
-		cout << "Invalid Input Format: Example: 1,1" << endl;
-		prompt(x, y);
-	}
+	//Checks if there is a comma in the input string; if so, execute codes
+	if (commaPos != -1) {
 
+		
+		coordinate.at(commaPos) = ' '; // change comma to space to pass the string to stringstream.
 
-	//check if the coordinate input is 3, has comma in the middle, and each coordinate value is an integer.
-
-	else if (coordinate.length() != 3 || coordinate.at(1) != ',' || !isdigit(coordinate.at(0)) || !isdigit(coordinate.at(2)))
-	{
-		cout << "Invalid Input Format, x and y coordinates must be between 1 - 3. Example: 1,1" << endl;
-		prompt(x, y);
-	}
-	else
-	{
-		coordinate.at(1) = ' '; // change comma to space to pass the string to stringstream.
 		istringstream iss(coordinate);
+
+
 		if (iss >> x && iss >> y) {
 			int index = boardWidth * y + x;
 			//checks if the inputted coordinates are out of bounds.
@@ -151,8 +142,25 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 			cout << "coordinate extraction failure" << endl;
 			return extractFailure;
 		}
+
+		return success;//SHOULD IT BE HERE??
 	}
-	return success;
+	
+	//If the comma is not found, prompt for input again
+	else {
+		cout << "Invalid Input Format: Example: 1,1" << endl;
+		prompt(x, y);
+	}
+
+
+	//check if the coordinate input is 3, has comma in the middle, and each coordinate value is an integer.
+
+	
+	else
+	{
+		
+		
+		
 }
 
 //Prompts game to change player turn.
