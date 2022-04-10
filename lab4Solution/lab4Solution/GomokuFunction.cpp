@@ -61,7 +61,47 @@ bool GomokuGame::done() {
 	}
 }
 
-
+int GomokuGame::turn() {
+	unsigned int x_coor = 0;
+	unsigned int y_coor = 0;
+	int promptResult;
+	if (piece == "B") {
+		cout << "current player: B" << endl;
+		promptResult = prompt(x_coor, y_coor);
+		if (promptResult == success) {
+			cout << *this << endl; //print board
+			cout << "Player B: "; //print player's past moves.
+			for (unsigned int i = 0; i < player1.size(); i++) {
+				cout << player1[i].first << "," << player1[i].second << "; ";
+			}
+			cout << endl;
+			piece = "W"; // switch player turn
+			moves_num++; //increment total moves played by both players.
+		}
+		else {
+			return promptResult;
+		}
+	}
+	else if (piece == "W") {
+		cout << "current player: W" << endl;
+		promptResult = prompt(x_coor, y_coor);
+		if (promptResult == success) {
+			cout << *this << endl;
+			cout << "Player W: ";
+			for (unsigned int i = 0; i < player2.size(); i++) {
+				cout << player2[i].first << "," << player2[i].second << "; ";
+			}
+			cout << endl;
+			piece = "W";
+			moves_num++;
+		}
+		else {
+			//tracks whether a player quit game, the program failed to extract coordinates, or if the coordinate was valid.
+			return promptResult;
+		}
+	}
+	return success;
+}
 void GomokuGame::print() {
 	cout << *this << endl;
 }
