@@ -20,6 +20,7 @@ Work Assignment
 	24. Matthew K. Daniel R.
 	25. Matthew k.
 	26. Jinfeng C.
+	27. Daniel K.
 
 
 
