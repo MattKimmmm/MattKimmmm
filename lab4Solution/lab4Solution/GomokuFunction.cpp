@@ -23,7 +23,8 @@ bool GomokuGame::done() {
 	size_t diagonal_upper_right = static_cast<size_t>(boardWidth) + 1;
 	size_t diagonal_lower_right = static_cast<size_t>(boardWidth) - 1; 
 	int vert_inc = 19;
-	int diag_inc = 20;
+	int diag_inc_r = 20;
+	int diag_inc_l = 18;
 	for (size_t i = first_piece_index; i < boardHeight; i++) {
 		for (size_t j = first_piece_index; j < boardWidth; j++) {
 			int index = boardWidth * i + j;
@@ -52,15 +53,25 @@ bool GomokuGame::done() {
 
 			//diagonal to the right check
 			if (i < 16 && j < 16) {
-				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[index + diag_inc].boardDisplay
-					&& pieceList[index + diag_inc].boardDisplay == pieceList[index + diag_inc * 2].boardDisplay
-					&& pieceList[index + diag_inc * 2].boardDisplay == pieceList[index + diag_inc * 3].boardDisplay
-					&& pieceList[index + diag_inc * 3].boardDisplay == pieceList[index + diag_inc * 4].boardDisplay) {
+				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[index + diag_inc_r].boardDisplay
+					&& pieceList[index + diag_inc_r].boardDisplay == pieceList[index + diag_inc_r * 2].boardDisplay
+					&& pieceList[index + diag_inc_r * 2].boardDisplay == pieceList[index + diag_inc_r * 3].boardDisplay
+					&& pieceList[index + diag_inc_r * 3].boardDisplay == pieceList[index + diag_inc_r * 4].boardDisplay) {
 					winner = pieceList[index].boardDisplay;
 					return true;
 				}
 			}
 			
+			//diagonal to the left check
+			if (i < 16 && j >= 5) {
+				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[index + diag_inc_l].boardDisplay
+					&& pieceList[index + diag_inc_l].boardDisplay == pieceList[index + diag_inc_l * 2].boardDisplay
+					&& pieceList[index + diag_inc_l * 2].boardDisplay == pieceList[index + diag_inc_l * 3].boardDisplay
+					&& pieceList[index + diag_inc_l * 3].boardDisplay == pieceList[index + diag_inc_l * 4].boardDisplay) {
+					winner = pieceList[index].boardDisplay;
+					return true;
+				}
+			}
 		}
 	}
 	
