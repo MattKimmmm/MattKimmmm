@@ -23,7 +23,7 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 	}
 	else if ((piece == "B") || (piece == "W")) {
 		maxCoor = 19;
-		minCoor = 0;
+		minCoor = 1;
 		isGomoku = true;
 	}
 
