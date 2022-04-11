@@ -18,9 +18,9 @@ Work Assignment
 	18. Daniel R. Jinfeng C.
 	20.-23. Daniel R.
 	24. Matthew K. Daniel R.
-	25. Matthew k.
-	26. Jinfeng C.
-	27. Daniel K.
+	25. Matthew k. 
+	26. Jinfeng C. Daniel R.
+	27. Daniel R.
 
 
 
@@ -30,8 +30,16 @@ Work Assignment
 
 
 Errors/Warnings:
-	
-	
+
+	- When the coordinate contained a two digit integer value, its display on the board was relatively more shifted to the right compared to the pieces with single digit
+	coordinate value. 
+
+	- The program didnt take into account how the board was set up differently between TicTacToe and Gomoku. In TicTacToe, the x and y axis coordinate label
+	begins from 0, while in Gomoku, it begins from 1. Also, coordinate value of 1 was out of bounds in TicTacToe, while in Gomoku, it represented the lowest
+	possible value for an inbound coordinate.
+
+	C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+		Solved by redeclaring variable as size_t variable
 	E0392	member function "TicTacToe::turn" may not be redeclared outside its class	
 		Solved by adding a closing bracket to the previous code segment
 	

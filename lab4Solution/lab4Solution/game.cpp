@@ -17,7 +17,7 @@ static GameBase* checkArg(int argc, char* argv[]) {
         }
 
         
-        else if (argv[1] == "Gomoku") {
+        else if (strcmp("Gomoku", argv[1]) == 0) {
             game = new GomokuGame();
         }
 
@@ -53,7 +53,7 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
         for (int j = 0; j <= game.boardWidth - 1; j++) {
             int index = game.boardWidth * i + j;
             /*using setw manipulator for the spacings between displayed pieces*/
-            cout << setw(game.longestDispLen + 1) << game.pieceList[index].boardDisplay;
+            cout << setw(static_cast<size_t>(game.longestDispLen) + 1) << game.pieceList[index].boardDisplay;
         }
         // same spacing for displayed pieces for horizontal alignment
         
@@ -63,9 +63,9 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
     }
 
     //print out horizontal label
-    cout << setw(game.longestDispLen + 1)<< " " << 0;
+    cout << setw(static_cast<size_t>(game.longestDispLen) + 1)<< " " << 0;
     for (int i = 1; i < game.boardWidth; i++) {
-        cout << setw(game.longestDispLen + 1) << i;
+        cout << setw(static_cast<size_t>(game.longestDispLen) + 1) << i;
     }
     cout << endl;
     return out;
@@ -82,7 +82,7 @@ ostream& operator<<(ostream& out, const GomokuGame& game) {
             {
                 int index = game.boardWidth * i + j;
                 gamePiece piece;
-                piece.boardDisplay = ' ';
+                piece.boardDisplay = " ";
                 game.pieceList.push_back(piece);
             }
         }
@@ -90,23 +90,36 @@ ostream& operator<<(ostream& out, const GomokuGame& game) {
 
     //print out game pieces on the board.
     for (int i = game.boardHeight - 1; i >= 0; i--) {
-        cout << i << ""; //print out vertical label
+        if (i < 9) {
+            cout << ' ' << i + 1;
+        }
+        else {
+            cout << i + 1 << ""; //print out vertical label
+        }
         for (int j = 0; j <= game.boardWidth - 1; j++) {
             int index = game.boardWidth * i + j;
             //using setw manipulator for the spacings between displayed pieces
-            cout << setw(game.longestDispLen) << game.pieceList[index].boardDisplay;
+            if (j >= 10) {
+                cout << setw(static_cast<size_t>(game.longestDispLen) + 2) << game.pieceList[index].boardDisplay;
+                continue;
+            }
+            cout << setw(static_cast<size_t>(game.longestDispLen) + 1) << game.pieceList[index].boardDisplay;
         }
         // same spacing for displayed pieces for horizontal alignment
-        for (int i = 0; i < game.boardHeight - 1; i++) {
-            cout << endl;
-        }
+        cout << endl;
     }
 
     //print out horizontal label
-    cout << 0;
+    cout << " X" << setw(static_cast<size_t>(game.longestDispLen) + 1);
     for (int i = 1; i <= game.boardWidth; i++) {
-        cout << setw(game.longestDispLen) << i;
+        if (i > 8) {
+            cout << i << setw(static_cast<size_t>(game.longestDispLen) + 2);
+        }
+        else {
+            cout << i << setw(static_cast<size_t>(game.longestDispLen) + 1);
+        }
     }
+    cout << endl;
     return out;
 }
 

@@ -77,15 +77,19 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 	stringstream temp(userInput);
 	getline(temp, coordinate);
 	size_t maxCoor = 0;//keep track of the max value of a possible coordinate, changes depend on game type; e.g. maxCoor= 19 in Gomoku
-
+	size_t minCoor = 0;
 	size_t commaPos = -1;//tracks where the comma is in the input string (if present)
+	bool isGomoku = false;
 
 	//Determine the max value of input coordinates based on game type
 	if ((piece == "X") || ((piece == "O"))) {
 		maxCoor = 3;
+		minCoor = 1;
 	}
 	else if ((piece == "B") || (piece == "W")) {
 		maxCoor = 19;
+		minCoor = 0;
+		isGomoku = true;
 	}
 
 	//check if the user input is quit, which then quits the game.
@@ -108,16 +112,24 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 
 
 		if (iss >> x && iss >> y) {
-			int index = boardWidth * y + x;
+			int index = 0;
+			if (isGomoku) {
+				index = boardWidth * (y - 1) + (x - 1);
+			}
+			else {
+				index = boardWidth * y + x;
+			}
 			//checks if the inputted coordinates are out of bounds.
-			if (x < 1 || x > maxCoor || y < 1 || y > maxCoor) {
+			if (x < minCoor || x > maxCoor || y < minCoor || y > maxCoor) {
 				cout << "Coordinate out of bounds" << endl;
 				prompt(x, y);
+				return 6;
 			}
 			//check if the board coordinate is already occupied.
 			else if (pieceList[index].boardDisplay != " ") {
 				cout << "Board coordinate has been played, choose another " << endl;
 				prompt(x, y);
+				return 6;
 			}
 			else {
 				if (piece == "X") {
@@ -130,12 +142,12 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 				}
 				else if (piece == "B") {
 					pieceList[index].boardDisplay = "B";
+					player1.push_back(make_pair(x, y));
 				}
 				else {
 					pieceList[index].boardDisplay = "W";
+					player2.push_back(make_pair(x, y));
 				}
-
-
 
 				//Updates the longestDispLen variable if the new game piece has a longer length
 				unsigned int length = static_cast<unsigned int>(piece.length()); //A temp variable that keeps the length of the game piece display
