@@ -60,7 +60,11 @@ bool TicTacToe::done() {
 
 //Checks if the two players drew the game.
 bool TicTacToe::draw() {
-	if (moves_num < 9 || done()) { // starting from 0, 8 is the maximum number of moves that could be made by players combined.
+
+	// starting from 0, 8 is the maximum number of moves that could be made by players combined.
+	int maxMove_num = 9; 
+
+	if (moves_num < maxMove_num || done()) { 
 		return false;
 	}
 	return true;
