@@ -28,7 +28,7 @@ bool GomokuGame::done() {
 			int index = boardWidth * i + j;
 
 			//Check for vertical 
-			if (index + (vert_inc * 4) <= (boardHeight - 1) * (boardWidth - 1)) {
+			if (i + 4 < boardHeight) {
 				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[index+vert_inc].boardDisplay 
 					&& pieceList[index + vert_inc].boardDisplay == pieceList[index + vert_inc*2].boardDisplay
 					&& pieceList[index + vert_inc*2].boardDisplay == pieceList[index + vert_inc*3].boardDisplay
@@ -37,6 +37,18 @@ bool GomokuGame::done() {
 					return true;
 				}
 			}
+
+			//check for horizontal
+			if (j + 4 < boardWidth) {
+				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[index + 1].boardDisplay
+					&& pieceList[index + 1].boardDisplay == pieceList[index + 2].boardDisplay
+					&& pieceList[index + 2].boardDisplay == pieceList[index + 3].boardDisplay
+					&& pieceList[index + 3].boardDisplay == pieceList[index + 4].boardDisplay) {
+					winner = pieceList[index].boardDisplay;
+					return true;
+				}
+			}
+			
 		}
 	}
 	
