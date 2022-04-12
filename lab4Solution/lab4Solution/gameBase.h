@@ -26,6 +26,20 @@ enum programVal {
 	commandLineNum
 };
 
+//Enumeration values for displacement in row or column
+enum displacementNum {
+	displace0,
+	displace1,
+	displace2,
+	displace3,
+	displace4,
+	displace5,
+	displace8 = 8,
+	displace10 = 10,
+	displace12 = 12,
+	displace16= 16
+};
+
 //The TicTacToe game class.
 class GameBase {
 public:
