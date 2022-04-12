@@ -100,10 +100,10 @@ ostream& operator<<(ostream& out, const GomokuGame& game) {
             int index = game.boardWidth * i + j;
             //using setw manipulator for the spacings between displayed pieces
             if (j >= 10) {
-                cout << setw(static_cast<size_t>(game.longestDispLen) + 2) << game.pieceList[index].boardDisplay;
+                cout << setw(static_cast<size_t>(game.longestDispLen) + displace2) << game.pieceList[index].boardDisplay;
                 continue;
             }
-            cout << setw(static_cast<size_t>(game.longestDispLen) + 1) << game.pieceList[index].boardDisplay;
+            cout << setw(static_cast<size_t>(game.longestDispLen) + displace1) << game.pieceList[index].boardDisplay;
         }
         // same spacing for displayed pieces for horizontal alignment
         cout << endl;

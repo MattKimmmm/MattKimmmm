@@ -87,6 +87,8 @@ bool GomokuGame::done() {
 parameters(other than the this pointer that's passed implicitly to all non-static methods
 and operators) and has a bool return type. The method should return true if there is no
 path left that can lead to 5 stones in a row, otherwise the method should return false.*/
+
+/*
 bool GomokuGame::draw() {
 	size_t first_piece_index = 0;
 	size_t diagonal_upper_right = static_cast<size_t>(boardWidth) + 1;
@@ -188,6 +190,24 @@ bool GomokuGame::draw() {
 
 	// no possible path for a winning condition
 	return true;
+}
+
+*/
+
+bool GomokuGame::draw() {
+
+	//Rows are from bottom to top, columns are from left to right
+	int index = row * boardWidth + col;
+
+	//Iterate through each row
+	for (int row = boardHeight - 1; row >= 0; --row) {
+
+		//Iterate through each column (of each row)
+		for (int col = 0; col < boardWidth - 1; ++col) {
+
+		}
+	}
+
 }
 
 int GomokuGame::turn() {
