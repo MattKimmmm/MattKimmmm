@@ -25,14 +25,14 @@ bool GomokuGame::done() {
 	size_t vert_inc = 19;
 	size_t diag_inc_r = 20;
 	size_t diag_inc_l = 18;
-	for (size_t i = first_piece_index; i < boardHeight; i++) {
-		for (size_t j = first_piece_index; j < boardWidth; j++) {
+	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight); i++) {
+		for (size_t j = first_piece_index; j < static_cast<size_t>(boardWidth); j++) {
 			size_t index = boardWidth * i + j;
 
 			
 
 			//Check for vertical 
-			if (i + 4 < boardHeight) {
+			if (i + 4 < static_cast<size_t>(boardHeight)) {
 				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[(long)index+vert_inc].boardDisplay 
 					&& pieceList[index + vert_inc].boardDisplay == pieceList[(long)index + vert_inc* displace2].boardDisplay
 					&& pieceList[(long)index + vert_inc* displace2].boardDisplay == pieceList[(long)index + vert_inc* displace3].boardDisplay
@@ -45,7 +45,7 @@ bool GomokuGame::done() {
 			
 
 			//check for horizontal
-			if (j + 4 < boardWidth) {
+			if (j + 4 < static_cast<size_t>(boardWidth)) {
 				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[index + displace1].boardDisplay
 					&& pieceList[index + displace1].boardDisplay == pieceList[index + displace2].boardDisplay
 					&& pieceList[index + displace2].boardDisplay == pieceList[index + displace3].boardDisplay
