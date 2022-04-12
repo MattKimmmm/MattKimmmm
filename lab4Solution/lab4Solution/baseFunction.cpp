@@ -94,14 +94,16 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 		}
 		else {
 			cout << "coordinate extraction failure" << endl;
-			return extractFailure;
+
+
+			return prompt(x, y);
 		}
 
 
 	}
 	cout << "Incorrect input format" << endl;
 
-	return failure;
+	return prompt(x, y);
 }
 
 /*Move the play() method from your derived class to the base class and modify it so that
