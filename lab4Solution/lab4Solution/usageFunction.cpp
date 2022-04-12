@@ -8,7 +8,7 @@ using namespace std;
 int GameBase::userMessage() {
     cout << "Usage: lab4Solution.exe TicTacToe OR lab4Solution.exe Gomoku" << endl;
     cout << "If you would like to play customized Gomoku," << endl;
-    cout << "Usage: lab4Solution.exe Gomoku[boardsize][number of connected pieces to win]" << endl;
+    cout << "Usage: lab4Solution.exe Gomoku [boardsize] [number of connected pieces to win]" << endl;
     cout << "Example: lab4Solution.exe Gomoku 8 4" << endl;
     return static_cast<int>(returnVal::incorrectInput);
 }
