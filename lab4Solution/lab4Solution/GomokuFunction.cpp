@@ -22,32 +22,34 @@ bool GomokuGame::done() {
 	int first_piece_index = 0;
 	size_t diagonal_upper_right = static_cast<size_t>(boardWidth) + 1;
 	size_t diagonal_lower_right = static_cast<size_t>(boardWidth) - 1; 
-	int vert_inc = 19;
-	int diag_inc_r = 20;
-	int diag_inc_l = 18;
+	size_t vert_inc = 19;
+	size_t diag_inc_r = 20;
+	size_t diag_inc_l = 18;
 	for (size_t i = first_piece_index; i < boardHeight; i++) {
 		for (size_t j = first_piece_index; j < boardWidth; j++) {
-			int index = boardWidth * i + j;
+			size_t index = boardWidth * i + j;
 
 			
 
 			//Check for vertical 
 			if (i + 4 < boardHeight) {
 				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[(long)index+vert_inc].boardDisplay 
-					&& pieceList[(long)index + vert_inc].boardDisplay == pieceList[(long)index + vert_inc*2].boardDisplay
-					&& pieceList[(long)index + vert_inc*2].boardDisplay == pieceList[(long)index + vert_inc*3].boardDisplay
-					&& pieceList[(long)index + vert_inc*3].boardDisplay == pieceList[(long)index + vert_inc*4].boardDisplay) {
+					&& pieceList[index + vert_inc].boardDisplay == pieceList[(long)index + vert_inc* displace2].boardDisplay
+					&& pieceList[(long)index + vert_inc* displace2].boardDisplay == pieceList[(long)index + vert_inc* displace3].boardDisplay
+					&& pieceList[(long)index + vert_inc* displace3].boardDisplay == pieceList[(long)index + vert_inc* displace4].boardDisplay) {
 					winner = pieceList[index].boardDisplay;
 					return true;
 				}
 			}
 			
+			
+
 			//check for horizontal
 			if (j + 4 < boardWidth) {
-				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[(long)index + displace1].boardDisplay
-					&& pieceList[(long)index + displace1].boardDisplay == pieceList[(long)index + displace2].boardDisplay
-					&& pieceList[(long)index + displace2].boardDisplay == pieceList[(long)index + displace3].boardDisplay
-					&& pieceList[(long)index + displace3].boardDisplay == pieceList[(long)index + displace4].boardDisplay) {
+				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[index + displace1].boardDisplay
+					&& pieceList[index + displace1].boardDisplay == pieceList[index + displace2].boardDisplay
+					&& pieceList[index + displace2].boardDisplay == pieceList[index + displace3].boardDisplay
+					&& pieceList[index + displace3].boardDisplay == pieceList[index + displace4].boardDisplay) {
 					winner = pieceList[index].boardDisplay;
 					return true;
 				}
