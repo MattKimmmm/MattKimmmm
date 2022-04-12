@@ -41,13 +41,13 @@ bool GomokuGame::done() {
 					return true;
 				}
 			}
-
+			
 			//check for horizontal
 			if (j + 4 < boardWidth) {
-				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[(long)index + 1].boardDisplay
-					&& pieceList[(long)index + 1].boardDisplay == pieceList[(long)index + 2].boardDisplay
-					&& pieceList[(long)index + 2].boardDisplay == pieceList[(long)index + 3].boardDisplay
-					&& pieceList[(long)index + 3].boardDisplay == pieceList[(long)index + 4].boardDisplay) {
+				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[(long)index + displace1].boardDisplay
+					&& pieceList[(long)index + displace1].boardDisplay == pieceList[(long)index + displace2].boardDisplay
+					&& pieceList[(long)index + displace2].boardDisplay == pieceList[(long)index + displace3].boardDisplay
+					&& pieceList[(long)index + displace3].boardDisplay == pieceList[(long)index + displace4].boardDisplay) {
 					winner = pieceList[index].boardDisplay;
 					return true;
 				}
@@ -56,9 +56,9 @@ bool GomokuGame::done() {
 			//diagonal to the right check
 			if (i < 16 && j < 16) {
 				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[(long)index + diag_inc_r].boardDisplay
-					&& pieceList[(long)index + diag_inc_r].boardDisplay == pieceList[(long)index + diag_inc_r * 2].boardDisplay
-					&& pieceList[(long)index + diag_inc_r * 2].boardDisplay == pieceList[(long)index + diag_inc_r * 3].boardDisplay
-					&& pieceList[(long)index + diag_inc_r * 3].boardDisplay == pieceList[(long)index + diag_inc_r * 4].boardDisplay) {
+					&& pieceList[(long)index + diag_inc_r].boardDisplay == pieceList[(long)index + diag_inc_r * displace2].boardDisplay
+					&& pieceList[(long)index + diag_inc_r * displace2].boardDisplay == pieceList[(long)index + diag_inc_r * displace3].boardDisplay
+					&& pieceList[(long)index + diag_inc_r * displace3].boardDisplay == pieceList[(long)index + diag_inc_r * displace4].boardDisplay) {
 					winner = pieceList[index].boardDisplay;
 					return true;
 				}
@@ -67,9 +67,9 @@ bool GomokuGame::done() {
 			//diagonal to the left check
 			if (i < 16 && j >= 5) {
 				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[index + diag_inc_l].boardDisplay
-					&& pieceList[index + diag_inc_l].boardDisplay == pieceList[index + diag_inc_l * 2].boardDisplay
-					&& pieceList[index + diag_inc_l * 2].boardDisplay == pieceList[index + diag_inc_l * 3].boardDisplay
-					&& pieceList[index + diag_inc_l * 3].boardDisplay == pieceList[index + diag_inc_l * 4].boardDisplay) {
+					&& pieceList[index + diag_inc_l].boardDisplay == pieceList[index + diag_inc_l * displace2].boardDisplay
+					&& pieceList[index + diag_inc_l * displace2].boardDisplay == pieceList[index + diag_inc_l * displace3].boardDisplay
+					&& pieceList[index + diag_inc_l * displace3].boardDisplay == pieceList[index + diag_inc_l * displace4].boardDisplay) {
 					winner = pieceList[index].boardDisplay;
 					return true;
 				}
@@ -92,11 +92,11 @@ bool GomokuGame::draw() {
 
 	//horizontal check for black
 	for (size_t i = first_piece_index; i < boardHeight; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - 4; j++) {
+		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - displace4; j++) {
 			//starting from the initial piece, check all 5 spots in the path if there is a white stone.
 			//Path is valid if there are no white stones
-			if (pieceList[j].boardDisplay != "W" && pieceList[j + 1].boardDisplay != "W" && pieceList[j + 2].boardDisplay != "W" &&
-				pieceList[j + 3].boardDisplay != "W" && pieceList[j + 4].boardDisplay != "W") {
+			if (pieceList[j].boardDisplay != "W" && pieceList[j + displace1].boardDisplay != "W" && pieceList[j + displace2].boardDisplay != "W" &&
+				pieceList[j + displace3].boardDisplay != "W" && pieceList[j + displace4].boardDisplay != "W") {
 				return false;
 			}
 		}
@@ -104,81 +104,81 @@ bool GomokuGame::draw() {
 
 	//horizontal check for white
 	for (size_t i = first_piece_index; i < boardHeight; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - 4; j++) {
-			if (pieceList[j].boardDisplay != "B" && pieceList[j + 1].boardDisplay != "B" && pieceList[j + 2].boardDisplay != "B" &&
-				pieceList[j + 3].boardDisplay != "B" && pieceList[j + 4].boardDisplay != "B") {
+		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - displace4; j++) {
+			if (pieceList[j].boardDisplay != "B" && pieceList[j + displace1].boardDisplay != "B" && pieceList[j + displace2].boardDisplay != "B" &&
+				pieceList[j + displace3].boardDisplay != "B" && pieceList[j + displace4].boardDisplay != "B") {
 				return false;
 			}
 		}
 	}
 
 	//vertical check for black
-	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - 4; i += boardWidth) {
+	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - displace4; i += boardWidth) {
 		for (size_t j = i; j % boardWidth < boardWidth; j++) {
 			if (pieceList[j].boardDisplay != "W" && pieceList[j + boardWidth].boardDisplay != "W" &&
-				pieceList[j + 2 * static_cast<size_t>(boardWidth)].boardDisplay != "W" &&
-				pieceList[j + 3 * static_cast<size_t>(boardWidth)].boardDisplay != "W" &&
-				pieceList[j + 4 * static_cast<size_t>(boardWidth)].boardDisplay != "W") {
+				pieceList[j + displace2 * static_cast<size_t>(boardWidth)].boardDisplay != "W" &&
+				pieceList[j + displace3 * static_cast<size_t>(boardWidth)].boardDisplay != "W" &&
+				pieceList[j + displace4 * static_cast<size_t>(boardWidth)].boardDisplay != "W") {
 				return false;
 			}
 		}
 	}
 
 	//vertical check for white
-	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - 4; i += boardWidth) {
+	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - displace4; i += boardWidth) {
 		for (size_t j = i; j % boardWidth < boardWidth; j++) {
 			if (pieceList[j].boardDisplay != "B" && pieceList[j + boardWidth].boardDisplay != "B" && 
-				pieceList[j + 2* static_cast<size_t>(boardWidth)].boardDisplay != "B" &&
-				pieceList[j + 3* static_cast<size_t>(boardWidth)].boardDisplay != "B" &&
-				pieceList[j + 4* static_cast<size_t>(boardWidth)].boardDisplay != "B") {
+				pieceList[j + displace2* static_cast<size_t>(boardWidth)].boardDisplay != "B" &&
+				pieceList[j + displace3* static_cast<size_t>(boardWidth)].boardDisplay != "B" &&
+				pieceList[j + displace4* static_cast<size_t>(boardWidth)].boardDisplay != "B") {
 				return false;
 			}
 		}
 	}
 
 	//diagonal to upper right, black
-	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - 4; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - 4; j++) {
+	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - displace4; i += boardWidth) {
+		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - displace4; j++) {
 			if (pieceList[j].boardDisplay != "W" && pieceList[j + diagonal_upper_right].boardDisplay != "W" &&
-				pieceList[j + 2 * diagonal_upper_right].boardDisplay != "W" &&
-				pieceList[j + 3 * diagonal_upper_right].boardDisplay != "W" &&
-				pieceList[j + 4 * diagonal_upper_right].boardDisplay != "W") {
+				pieceList[j + displace2 * diagonal_upper_right].boardDisplay != "W" &&
+				pieceList[j + displace3 * diagonal_upper_right].boardDisplay != "W" &&
+				pieceList[j + displace4 * diagonal_upper_right].boardDisplay != "W") {
 				return false;
 			}
 		}
 	}
 
 	//diagonal to upper right, white
-	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - 4; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - 4; j++) {
+	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - displace4; i += boardWidth) {
+		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - displace4; j++) {
 			if (pieceList[j].boardDisplay != "B" && pieceList[j + diagonal_upper_right].boardDisplay != "B" && 
-				pieceList[j + 2* diagonal_upper_right].boardDisplay != "B" &&
-				pieceList[j + 3* diagonal_upper_right].boardDisplay != "B" && 
-				pieceList[j + 4* diagonal_upper_right].boardDisplay != "B") {
+				pieceList[j + displace2* diagonal_upper_right].boardDisplay != "B" &&
+				pieceList[j + displace3* diagonal_upper_right].boardDisplay != "B" &&
+				pieceList[j + displace4* diagonal_upper_right].boardDisplay != "B") {
 				return false;
 			}
 		}
 	}
 
 	//diagonal to bottom right, black
-	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - 4; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - 4; j++) {
+	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - displace4; i += boardWidth) {
+		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - displace4; j++) {
 			if (pieceList[j].boardDisplay != "W" && pieceList[j + diagonal_lower_right].boardDisplay != "W" &&
-				pieceList[j + 2 * diagonal_lower_right].boardDisplay != "W" &&
-				pieceList[j + 3 * diagonal_lower_right].boardDisplay != "W" &&
-				pieceList[j + 4 * diagonal_lower_right].boardDisplay != "W") {
+				pieceList[j + displace2 * diagonal_lower_right].boardDisplay != "W" &&
+				pieceList[j + displace3 * diagonal_lower_right].boardDisplay != "W" &&
+				pieceList[j + displace4 * diagonal_lower_right].boardDisplay != "W") {
 				return false;
 			}
 		}
 	}
 
 	//diagonal to upper right, white
-	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - 4; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - 4; j++) {
+	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - displace4; i += boardWidth) {
+		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - displace4; j++) {
 			if (pieceList[j].boardDisplay != "B" && pieceList[j + diagonal_lower_right].boardDisplay != "B" &&
-				pieceList[j + 2 * diagonal_lower_right].boardDisplay != "B" &&
-				pieceList[j + 3 * diagonal_lower_right].boardDisplay != "B" &&
-				pieceList[j + 4 * diagonal_lower_right].boardDisplay != "B") {
+				pieceList[j + displace2 * diagonal_lower_right].boardDisplay != "B" &&
+				pieceList[j + displace3 * diagonal_lower_right].boardDisplay != "B" &&
+				pieceList[j + displace4 * diagonal_lower_right].boardDisplay != "B") {
 				return false;
 			}
 		}
