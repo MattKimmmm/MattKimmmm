@@ -99,6 +99,8 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 
 
 	}
+	cout << "Incorrect input format" << endl;
+
 	return failure;
 }
 
