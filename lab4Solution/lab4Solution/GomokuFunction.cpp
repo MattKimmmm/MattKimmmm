@@ -196,14 +196,36 @@ bool GomokuGame::draw() {
 
 bool GomokuGame::draw() {
 
+	int num2Win = 5;//Number of pieces to connect to win
+
 	//Rows are from bottom to top, columns are from left to right
-	int index = row * boardWidth + col;
+	
 
 	//Iterate through each row
 	for (int row = boardHeight - 1; row >= 0; --row) {
 
 		//Iterate through each column (of each row)
 		for (int col = 0; col < boardWidth - 1; ++col) {
+
+			int index = row * boardWidth + col;
+
+			//Only check horizontal empty spaces for pieces at 0 to (boardwidth -num2Win) columns
+			if (col <= boardWidth - num2Win) {
+
+				//Check if this and the next four pieces are empty, if so, not draw
+
+				bool allEmpty = true;//Tracks if all horizontal pieces are emtpy
+				for (int i = index; i < index + num2Win; ++i) {
+					if (pieceList[index].boardDisplay.compare(" ") != 0) {
+
+					}
+				}
+
+				
+				if()
+
+			}
+
 
 		}
 	}
