@@ -316,13 +316,35 @@ bool GomokuGame::draw() {
 			}
 
 			//Only check minor diagonal (bottom left to upper right) if there are enough pieces above and on the right
+			if ((row <= boardHeight - num2Win) && (col <= boardWidth - num2Win)) {
 
+				bool allEmpty = true;
+
+				//Check if this and the next four pieces in the upper right diagonal are empty
+				for (int i = index; i <= (num2Win - 1) * (boardWidth + 1); i += (boardWidth + 1)) {
+
+					//If any pieces is not empty (aka is "B" or "W" piece), the main disgonal line is not empty
+					if ((pieceList[i].boardDisplay.compare("B") == 0) || (pieceList[i].boardDisplay.compare("W") == 0)) {
+						allEmpty = false;
+					}
+				}
+
+				if (allEmpty) {
+					return false;
+				}
+
+			}
 
 
 
 		}
+
 	}
-	return false;
+
+	//If not five consecutive spaces are found, means there is a draw
+
+	return true;
+
 }
 
 int GomokuGame::turn() {
