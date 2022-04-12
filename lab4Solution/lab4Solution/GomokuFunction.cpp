@@ -7,6 +7,17 @@ GomokuGame::GomokuGame() {
 	
 	boardWidth = 19;
 	boardHeight = 19;
+	connectNum = 5;
+	piece = "B";
+	winner = " ";
+	player1 = {};
+	player2 = {};
+}
+
+GomokuGame::GomokuGame(int boardSize, int connectNumInput) {
+	boardWidth = boardSize;
+	boardHeight = boardSize;
+	connectNum = connectNumInput;
 	piece = "B";
 	winner = " ";
 	player1 = {};
@@ -22,60 +33,89 @@ bool GomokuGame::done() {
 	int first_piece_index = 0;
 	size_t diagonal_upper_right = static_cast<size_t>(boardWidth) + 1;
 	size_t diagonal_lower_right = static_cast<size_t>(boardWidth) - 1; 
-	size_t vert_inc = 19;
-	size_t diag_inc_r = 20;
-	size_t diag_inc_l = 18;
+	size_t vert_inc = static_cast<size_t>(boardWidth);
+	size_t diag_inc_r = static_cast<size_t>(boardWidth)+1;
+	size_t diag_inc_l = static_cast<size_t>(boardWidth)-1;
+	size_t connectNumLen = connectNum - 1;
 	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight); i++) {
 		for (size_t j = first_piece_index; j < static_cast<size_t>(boardWidth); j++) {
 			size_t index = boardWidth * i + j;
 
-			
-
 			//Check for vertical 
-			if (i + 4 < static_cast<size_t>(boardHeight)) {
-				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[(long)index+vert_inc].boardDisplay 
-					&& pieceList[index + vert_inc].boardDisplay == pieceList[(long)index + vert_inc* displace2].boardDisplay
-					&& pieceList[(long)index + vert_inc* displace2].boardDisplay == pieceList[(long)index + vert_inc* displace3].boardDisplay
-					&& pieceList[(long)index + vert_inc* displace3].boardDisplay == pieceList[(long)index + vert_inc* displace4].boardDisplay) {
-					winner = pieceList[index].boardDisplay;
-					return true;
+			if (i + connectNumLen < static_cast<size_t>(boardHeight)) {
+				if (pieceList[index].boardDisplay != " ") {
+					bool doneCheck = true;
+					size_t tempConnect = 1;
+					while (doneCheck && tempConnect <= connectNumLen) {
+						if (pieceList[index].boardDisplay != pieceList[(long)index + vert_inc * tempConnect].boardDisplay) {
+							doneCheck = false;
+						} 
+						tempConnect++;
+					}
+					if (doneCheck) {
+						winner = pieceList[index].boardDisplay;
+						return true;
+					}
 				}
 			}
-			
-			
 
 			//check for horizontal
-			if (j + 4 < static_cast<size_t>(boardWidth)) {
-				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[index + displace1].boardDisplay
-					&& pieceList[index + displace1].boardDisplay == pieceList[index + displace2].boardDisplay
-					&& pieceList[index + displace2].boardDisplay == pieceList[index + displace3].boardDisplay
-					&& pieceList[index + displace3].boardDisplay == pieceList[index + displace4].boardDisplay) {
-					winner = pieceList[index].boardDisplay;
-					return true;
+			if (j + connectNumLen < static_cast<size_t>(boardWidth)) {
+				if (pieceList[index].boardDisplay != " ") {
+					bool doneCheck = true;
+						size_t tempConnect = 1;
+						while (doneCheck && tempConnect <= connectNumLen) {
+							if (pieceList[index].boardDisplay != pieceList[(long)index + tempConnect].boardDisplay) {
+								doneCheck = false;
+							}
+							tempConnect++;
+						}
+					if (doneCheck) {
+						winner = pieceList[index].boardDisplay;
+						return true;
+					}
 				}
 			}
 
 			//diagonal to the right check
-			if (i < 16 && j < 16) {
-				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[(long)index + diag_inc_r].boardDisplay
-					&& pieceList[(long)index + diag_inc_r].boardDisplay == pieceList[(long)index + diag_inc_r * displace2].boardDisplay
-					&& pieceList[(long)index + diag_inc_r * displace2].boardDisplay == pieceList[(long)index + diag_inc_r * displace3].boardDisplay
-					&& pieceList[(long)index + diag_inc_r * displace3].boardDisplay == pieceList[(long)index + diag_inc_r * displace4].boardDisplay) {
-					winner = pieceList[index].boardDisplay;
-					return true;
+			if ((i < boardHeight - (connectNumLen - 1)) && (j < boardHeight - (connectNumLen - 1))) {
+				if (pieceList[index].boardDisplay != " ") {
+					bool doneCheck = true;
+					size_t tempConnect = 1;
+					while (doneCheck && tempConnect <= connectNumLen) {
+						if (pieceList[index].boardDisplay != pieceList[(long)index + diag_inc_r*tempConnect].boardDisplay) {
+							doneCheck = false;
+						}
+						tempConnect++;
+					}
+					if (doneCheck) {
+						winner = pieceList[index].boardDisplay;
+						return true;
+					}
 				}
 			}
 			
-			//diagonal to the left check
-			if (i < 16 && j >= 5) {
-				if (pieceList[index].boardDisplay != " " && pieceList[index].boardDisplay == pieceList[index + diag_inc_l].boardDisplay
-					&& pieceList[index + diag_inc_l].boardDisplay == pieceList[index + diag_inc_l * displace2].boardDisplay
-					&& pieceList[index + diag_inc_l * displace2].boardDisplay == pieceList[index + diag_inc_l * displace3].boardDisplay
-					&& pieceList[index + diag_inc_l * displace3].boardDisplay == pieceList[index + diag_inc_l * displace4].boardDisplay) {
-					winner = pieceList[index].boardDisplay;
-					return true;
+			if ((i < boardHeight - (connectNumLen - 1)) && (connectNumLen < j)) {
+				if (pieceList[index].boardDisplay != " ") {
+					bool doneCheck = true;
+					size_t tempConnect = 1;
+					size_t temp_i = i+1;
+					size_t temp_j = j-1;
+					while (doneCheck && tempConnect <= connectNumLen) {
+						if (pieceList[index].boardDisplay != pieceList[static_cast<size_t>(boardWidth) * temp_i + temp_j].boardDisplay) {
+							doneCheck = false;
+						}
+						tempConnect++;
+						temp_i++; 
+						temp_j--;
+					}
+					if (doneCheck) {
+						winner = pieceList[index].boardDisplay;
+						return true;
+					}
 				}
 			}
+			
 		}
 	}
 	

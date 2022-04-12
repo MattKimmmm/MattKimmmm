@@ -60,6 +60,7 @@ public:
 protected:
 	int boardWidth; 
 	int boardHeight; 
+	int connectNum; //number of pieces connected to win the game.
 	std::string piece; //tracks current piece to be played by a player.
 	std::string winner;//saves game piece of the player who won the game.
 	std::vector<std::pair<int, int>> player1; //vector of all moves by player X.
@@ -86,6 +87,7 @@ public:
 class GomokuGame : public GameBase {
 public:
 	GomokuGame();
+	GomokuGame(int boardSize, int connectNumInput);
 	friend std::ostream& operator<<(std::ostream& out, const GomokuGame& game);
 	virtual int turn();
 	virtual bool draw();

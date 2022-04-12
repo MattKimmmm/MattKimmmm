@@ -2,6 +2,7 @@
 //
 #include <iomanip>
 #include <ostream>
+#include <cstdlib>
 #include "gameBase.h"
 
 
@@ -15,13 +16,20 @@ static GameBase* checkArg(int argc, char* argv[]) {
         if (strcmp( "TicTacToe", argv[1]) == 0) {
             game = new TicTacToe();
         }
-
-        
         else if (strcmp("Gomoku", argv[1]) == 0) {
             game = new GomokuGame();
         }
-
-        
+    }
+    else if (argc == 4) {
+        if (strcmp("Gomoku", argv[1]) == 0) {
+            if (atoi(argv[2]) >= 3) {
+                if (atoi(argv[3]) <= atoi(argv[2])) {
+                    int boardSize = atoi(argv[2]);
+                    int connectNumInput = atoi(argv[3]);
+                    game = new GomokuGame(boardSize, connectNumInput);
+                }
+            }
+        }
     }
     return game;
 } 
