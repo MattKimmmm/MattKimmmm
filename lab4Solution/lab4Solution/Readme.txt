@@ -23,9 +23,8 @@ Work Assignment
 	27. Daniel R.
 
 
+Test Cases:
 
-	NEED TO SOLVE:
-			WHY need to type "quit" twice to quit the game? Check logic in prompt()
 
 
 
