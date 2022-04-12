@@ -212,19 +212,72 @@ bool GomokuGame::draw() {
 			//Only check horizontal empty spaces for pieces at 0 to (boardwidth -num2Win) columns
 			if (col <= boardWidth - num2Win) {
 
-				//Check if this and the next four pieces are empty, if so, not draw
-
+				
 				bool allEmpty = true;//Tracks if all horizontal pieces are emtpy
-				for (int i = index; i < index + num2Win; ++i) {
-					if (pieceList[index].boardDisplay.compare(" ") != 0) {
 
+				//Check if this and the next four pieces are empty, if so, not draw
+				for (int i = index; i < index + num2Win; ++i) {
+
+					//If any pieces is not empty (aka is "B" or "W" piece), the horizontal line is not empty
+					if ((pieceList[i].boardDisplay.compare("B") == 0) || (pieceList[i].boardDisplay.compare("W") == 0) ){
+						allEmpty = false;
 					}
 				}
 
-				
-				if()
+				//If there are five consecutive spaces, the game is not draw, so false is returned
+				if (allEmpty) {
+					return false;
+				}	
 
 			}
+
+			//Only check vertical empty spaces for pieces at row (boardHeight - 1) to (num2Win - 1)
+			if (row >= num2Win - 1) {
+
+				bool allEmpty = true;//Tracks if all vertical pieces are emtpy
+
+				//Check if this and the next four pieces are empty, if so, not draw
+				for (int i = index; i >= index - (num2Win - 1) * boardWidth; i-=boardWidth) {
+
+					//If any pieces is not empty (aka is "B" or "W" piece), the horizontal line is not empty
+					if ((pieceList[i].boardDisplay.compare("B") == 0) || (pieceList[i].boardDisplay.compare("W") == 0)) {
+						allEmpty = false;
+					}
+				}
+
+				//If there are five consecutive spaces, the game is not draw, so false is returned
+				if (allEmpty) {
+					return false;
+				}
+
+
+			}
+
+			//Only check main diagonal if there are enough pieces below and on the right to check
+			if ((row >= num2Win - 1) && (col <= boardWidth - num2Win)) {
+
+				bool allEmpty = true;
+
+				//Check if this and next four pieces in the bottom right diagonal are empty
+				for (int i = index; i >= (index - (num2Win - 1) * (boardWidth - 1)); i -= (boardWidth - 1)) {
+
+					//If any pieces is not empty (aka is "B" or "W" piece), the main disgonal line is not empty
+					if ((pieceList[i].boardDisplay.compare("B") == 0) || (pieceList[i].boardDisplay.compare("W") == 0)) {
+						allEmpty = false;
+					}
+
+				}
+
+				if (allEmpty) {
+					return false;
+				}
+
+
+			}
+
+			//Only check minor diagonal (bottom left to upper right) if there are enough pieces above and on the right
+
+
 
 
 		}
