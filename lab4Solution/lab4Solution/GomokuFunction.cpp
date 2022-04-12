@@ -95,7 +95,7 @@ bool GomokuGame::done() {
 				}
 			}
 			
-			if ((i < boardHeight - (connectNumLen - 1)) && (connectNumLen < j)) {
+			if ((i < boardHeight - (connectNumLen - 1)) && (connectNumLen <= j)) {
 				if (pieceList[index].boardDisplay != " ") {
 					bool doneCheck = true;
 					size_t tempConnect = 1;
@@ -128,115 +128,9 @@ parameters(other than the this pointer that's passed implicitly to all non-stati
 and operators) and has a bool return type. The method should return true if there is no
 path left that can lead to 5 stones in a row, otherwise the method should return false.*/
 
-/*
-bool GomokuGame::draw() {
-	size_t first_piece_index = 0;
-	size_t diagonal_upper_right = static_cast<size_t>(boardWidth) + 1;
-	size_t diagonal_lower_right = static_cast<size_t>(boardWidth) - 1;
-
-	//horizontal check for black
-	for (size_t i = first_piece_index; i < boardHeight; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - displace4; j++) {
-			//starting from the initial piece, check all 5 spots in the path if there is a white stone.
-			//Path is valid if there are no white stones
-			if (pieceList[j].boardDisplay != "W" && pieceList[j + displace1].boardDisplay != "W" && pieceList[j + displace2].boardDisplay != "W" &&
-				pieceList[j + displace3].boardDisplay != "W" && pieceList[j + displace4].boardDisplay != "W") {
-				return false;
-			}
-		}
-	}
-
-	//horizontal check for white
-	for (size_t i = first_piece_index; i < boardHeight; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - displace4; j++) {
-			if (pieceList[j].boardDisplay != "B" && pieceList[j + displace1].boardDisplay != "B" && pieceList[j + displace2].boardDisplay != "B" &&
-				pieceList[j + displace3].boardDisplay != "B" && pieceList[j + displace4].boardDisplay != "B") {
-				return false;
-			}
-		}
-	}
-
-	//vertical check for black
-	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - displace4; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < boardWidth; j++) {
-			if (pieceList[j].boardDisplay != "W" && pieceList[j + boardWidth].boardDisplay != "W" &&
-				pieceList[j + displace2 * static_cast<size_t>(boardWidth)].boardDisplay != "W" &&
-				pieceList[j + displace3 * static_cast<size_t>(boardWidth)].boardDisplay != "W" &&
-				pieceList[j + displace4 * static_cast<size_t>(boardWidth)].boardDisplay != "W") {
-				return false;
-			}
-		}
-	}
-
-	//vertical check for white
-	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - displace4; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < boardWidth; j++) {
-			if (pieceList[j].boardDisplay != "B" && pieceList[j + boardWidth].boardDisplay != "B" && 
-				pieceList[j + displace2* static_cast<size_t>(boardWidth)].boardDisplay != "B" &&
-				pieceList[j + displace3* static_cast<size_t>(boardWidth)].boardDisplay != "B" &&
-				pieceList[j + displace4* static_cast<size_t>(boardWidth)].boardDisplay != "B") {
-				return false;
-			}
-		}
-	}
-
-	//diagonal to upper right, black
-	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - displace4; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - displace4; j++) {
-			if (pieceList[j].boardDisplay != "W" && pieceList[j + diagonal_upper_right].boardDisplay != "W" &&
-				pieceList[j + displace2 * diagonal_upper_right].boardDisplay != "W" &&
-				pieceList[j + displace3 * diagonal_upper_right].boardDisplay != "W" &&
-				pieceList[j + displace4 * diagonal_upper_right].boardDisplay != "W") {
-				return false;
-			}
-		}
-	}
-
-	//diagonal to upper right, white
-	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - displace4; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - displace4; j++) {
-			if (pieceList[j].boardDisplay != "B" && pieceList[j + diagonal_upper_right].boardDisplay != "B" && 
-				pieceList[j + displace2* diagonal_upper_right].boardDisplay != "B" &&
-				pieceList[j + displace3* diagonal_upper_right].boardDisplay != "B" &&
-				pieceList[j + displace4* diagonal_upper_right].boardDisplay != "B") {
-				return false;
-			}
-		}
-	}
-
-	//diagonal to bottom right, black
-	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - displace4; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - displace4; j++) {
-			if (pieceList[j].boardDisplay != "W" && pieceList[j + diagonal_lower_right].boardDisplay != "W" &&
-				pieceList[j + displace2 * diagonal_lower_right].boardDisplay != "W" &&
-				pieceList[j + displace3 * diagonal_lower_right].boardDisplay != "W" &&
-				pieceList[j + displace4 * diagonal_lower_right].boardDisplay != "W") {
-				return false;
-			}
-		}
-	}
-
-	//diagonal to upper right, white
-	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight) - displace4; i += boardWidth) {
-		for (size_t j = i; j % boardWidth < static_cast<size_t>(boardWidth) - displace4; j++) {
-			if (pieceList[j].boardDisplay != "B" && pieceList[j + diagonal_lower_right].boardDisplay != "B" &&
-				pieceList[j + displace2 * diagonal_lower_right].boardDisplay != "B" &&
-				pieceList[j + displace3 * diagonal_lower_right].boardDisplay != "B" &&
-				pieceList[j + displace4 * diagonal_lower_right].boardDisplay != "B") {
-				return false;
-			}
-		}
-	}
-
-	// no possible path for a winning condition
-	return true;
-}
-
-*/
-
 bool GomokuGame::draw() {
 
-	int num2Win = 5;//Number of pieces to connect to win
+	int num2Win = connectNum;//Number of pieces to connect to win
 
 	//Rows are from bottom to top, columns are from left to right
 	
@@ -321,7 +215,7 @@ bool GomokuGame::draw() {
 				bool allEmpty = true;
 
 				//Check if this and the next four pieces in the upper right diagonal are empty
-				for (int i = index; i <= (num2Win - 1) * (boardWidth + 1); i += (boardWidth + 1)) {
+				for (int i = index; i <= index + (num2Win - 1) * (boardWidth + 1); i += (boardWidth + 1)) {
 
 					//If any pieces is not empty (aka is "B" or "W" piece), the main disgonal line is not empty
 					if ((pieceList[i].boardDisplay.compare("B") == 0) || (pieceList[i].boardDisplay.compare("W") == 0)) {
