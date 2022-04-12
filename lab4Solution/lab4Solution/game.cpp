@@ -28,6 +28,7 @@ static GameBase* checkArg(int argc, char* argv[]) {
                     int connectNumInput = atoi(argv[3]);
                     game = new GomokuGame(boardSize, connectNumInput);
                 }
+                
             }
         }
     }
