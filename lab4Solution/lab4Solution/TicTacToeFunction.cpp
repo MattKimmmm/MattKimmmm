@@ -19,10 +19,10 @@ TicTacToe::TicTacToe(): GameBase()  {
 //Checks if the game is over by checking if one of the player
 //has placed 3 consecutive game pieces on the board.
 bool TicTacToe::done() {
-	unsigned long long firstPieceIndex = 6;
+	unsigned int firstPieceIndex = 6;
 
 	//checks if there are 3 horizontally consecutive pieces.
-	for (unsigned long long i = 6; i < 17; i = i + 5)
+	for (unsigned int i = 6; i < 17; i = i + 5)
 	{
 		if (pieceList[i].boardDisplay != " " && pieceList[i].boardDisplay == pieceList[i + displace1].boardDisplay
 			&& pieceList[i + displace1].boardDisplay == pieceList[i + displace2].boardDisplay)
@@ -33,7 +33,7 @@ bool TicTacToe::done() {
 	}
 
 	//checks if there are 3 vertically consecutive pieces.
-	for (unsigned long long i = firstPieceIndex; i < 9; i++) {
+	for (unsigned int i = firstPieceIndex; i < 9; i++) {
 		if (pieceList[i].boardDisplay != " " && pieceList[i].boardDisplay == pieceList[i + displace5].boardDisplay
 			&& pieceList[i + displace5].boardDisplay == pieceList[i + displace10].boardDisplay)
 		{
