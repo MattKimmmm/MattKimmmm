@@ -213,7 +213,7 @@ X 1 2 3 4 5
 Result: Player B Wins!
 
 TEST CASE #4
-Cmd Line: lab4Solution.exe Gomoku 10 5
+Cmd Line: lab4Solution.exe Gomoku 10
 10
  9
  8
@@ -300,13 +300,7 @@ Input coordinate for your piece. Example: 1,1 :
 TEST CASE #8 - Wrong cmd line argument(wrong number of additional arguments, invalid argument for board size - zero or negative number, 
 										wrong argument format):
 
-$ ./lab4Solution.exe Gomoku 3
-Usage: lab4Solution.exe TicTacToe OR lab4Solution.exe Gomoku
-If you would like to play customized Gomoku,
-Usage: lab4Solution.exe Gomoku [boardsize] [number of connected pieces to win]
-Example: lab4Solution.exe Gomoku 8 4
-
-$ ./lab4Solution.exe Gomoku 0 4
+$ ./lab4Solution.exe Gomoku 4 0
 Usage: lab4Solution.exe TicTacToe OR lab4Solution.exe Gomoku
 If you would like to play customized Gomoku,
 Usage: lab4Solution.exe Gomoku [boardsize] [number of connected pieces to win]
@@ -318,7 +312,7 @@ If you would like to play customized Gomoku,
 Usage: lab4Solution.exe Gomoku [boardsize] [number of connected pieces to win]
 Example: lab4Solution.exe Gomoku 8 4
 
-$ ./lab4Solution.exe Gomoku 3,3
+$ ./lab4Solution.exe Gomoku 3 -3
 Usage: lab4Solution.exe TicTacToe OR lab4Solution.exe Gomoku
 If you would like to play customized Gomoku,
 Usage: lab4Solution.exe Gomoku [boardsize] [number of connected pieces to win]
