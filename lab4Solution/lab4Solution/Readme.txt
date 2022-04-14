@@ -1,5 +1,5 @@
 
-Authors: Jinfeng Chen (c.jinfeng@wustl.edu), Daniel Ryu, Matthew Kim
+Authors: Jinfeng Chen (c.jinfeng@wustl.edu), Daniel Ryu (r.seunghyeondaniel@wustl.edu), Matthew Kim
 
 CSE 332S  Lab 4
 
