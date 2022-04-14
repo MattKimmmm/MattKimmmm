@@ -11,6 +11,11 @@ Users can play Tic-Tac-Toe, Gomoku, or customized Gomoku with appropriate comman
 	"Gomoku x y" for the customized Gomoku game, which has an x by x gameboard and wining condition of y pieces in any directions
 
 
+Return Codes:
+
+	0 - Success
+
+
 
 Work Assignment
 
