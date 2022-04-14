@@ -168,6 +168,14 @@ Player B wins the game
 
 --------Extra Credit--------------------------------------------------------------------------------------------------------
 
+For extra credit, we made another constructor for the Gomoku game class that takes user command line input as parameters. 
+The new constructor is called and creates a new game object when there is 3 or 4 command line arguments. We also check if the user inputted connected
+pieces value is greater than the user inputted board size value, and also if the connected pieces value is zero or a negative number.
+Then, in the definition of the new constructor in the sourcefile, we pass user inputs into the board height, board width, and connected pieces value member variables
+in the base class. Finally, we have adjusted the done() and draw() methods accordingly so that the methods can dynamically adjust to the user input's 
+boardsize. 
+
+
 TEST CASE #1 - Gomoku game with two additional arguments 3 and 3:
 
 $ ./lab4Solution.exe Gomoku 3 3
