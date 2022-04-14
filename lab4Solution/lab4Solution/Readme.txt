@@ -1,9 +1,16 @@
 
-CSE 332S
+Authors: Jinfeng Chen (c.jinfeng@wustl.edu), Daniel Ryu, Matthew Kim
 
-Lab 4
+CSE 332S  Lab 4
 
-Jinfeng Chen, Daniel Ryu, Matthew Kim
+This program supports two games, Tic-Tac-Toe and Gomoku. 
+Users can play Tic-Tac-Toe, Gomoku, or customized Gomoku with appropriate command line arguments:
+
+	"TicTacToe" for the Tic-Tac-Toe game, 
+	"Gomoku" for the standard Gomoku game, which has a 19 by 19 gameboard and winning condition of 5 pieces in any directions
+	"Gomoku x y" for the customized Gomoku game, which has an x by x gameboard and wining condition of y pieces in any directions
+
+
 
 Work Assignment
 
@@ -27,7 +34,6 @@ Work Assignment
 	36.	Daniel R.
 	
 
-Result: Player B Wins!
 Errors/Warnings:
 
 	- When the coordinate contained a two digit integer value, its display on the board was relatively more shifted to the right compared to the pieces with single digit
