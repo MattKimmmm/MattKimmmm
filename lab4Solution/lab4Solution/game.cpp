@@ -35,7 +35,7 @@ static GameBase* checkArg(int argc, char* argv[]) {
     return game;
 } 
 
-GameBase::GameBase() : boardWidth(0), boardHeight(0), piece(""), winner(""), player1({}), player2({}), longestDispLen(1), moves_num(0) {
+GameBase::GameBase() : boardWidth(0), boardHeight(0), piece(""), winner(""), player1({}), player2({}), longestDispLen(1), moves_num(0), connectNum(3) {
 
 }
 

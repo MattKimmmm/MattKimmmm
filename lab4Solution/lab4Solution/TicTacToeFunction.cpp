@@ -25,7 +25,7 @@ bool TicTacToe::done() {
 	for (unsigned int i = 6; i < 17; i = i + 5)
 	{
 		if (pieceList[i].boardDisplay != " " && pieceList[i].boardDisplay == pieceList[i + displace1].boardDisplay
-			&& pieceList[i + displace1].boardDisplay == pieceList[i + displace2].boardDisplay)
+			&& pieceList[(long)i + (long)displace1].boardDisplay == pieceList[i + displace2].boardDisplay)
 		{
 			winner = pieceList[i].boardDisplay; //assign the piece as winning piece.
 			return true;
