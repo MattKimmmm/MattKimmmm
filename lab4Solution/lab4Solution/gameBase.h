@@ -22,8 +22,9 @@ enum returnVal {
 //Enumeration values for program input check.
 enum programVal {
 	programname,
-	filename,
-	commandLineNum
+	gameType,
+	boardDimension,
+	winLengthInput
 };
 
 //Enumeration values for displacement in row or column
@@ -66,7 +67,7 @@ protected:
 	std::vector<std::pair<int, int>> player1; //vector of all moves by player X.
 	std::vector<std::pair<int, int>> player2; //vector of all moves by player O.
 
-	unsigned int longestDispLen;//tracks the longest display string length of any piece on the board
+	int longestDispLen;//tracks the longest display string length of any piece on the board
 };
 
 

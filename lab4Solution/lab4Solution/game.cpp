@@ -13,22 +13,30 @@ using namespace std;
 static GameBase* checkArg(int argc, char* argv[]) {
     GameBase* game = 0;
     if (argc == 2) {
-        if (strcmp( "TicTacToe", argv[1]) == 0) {
+        if (strcmp( "TicTacToe", argv[gameType]) == 0) {
             game = new TicTacToe();
         }
-        else if (strcmp("Gomoku", argv[1]) == 0) {
+        else if (strcmp("Gomoku", argv[gameType]) == 0) {
             game = new GomokuGame();
         }
     }
+    else if (argc == 3) {
+        if (strcmp("Gomoku", argv[gameType]) == 0) {
+            if (atoi(argv[boardDimension]) >= 5) {
+                int boardSize = atoi(argv[boardDimension]);
+                int connectNumInput = 5;
+                game = new GomokuGame(boardSize, connectNumInput);
+            }
+        }
+    }
     else if (argc == 4) {
-        if (strcmp("Gomoku", argv[1]) == 0) {
-            if (atoi(argv[2]) >= 3) {
-                if (atoi(argv[3]) <= atoi(argv[2])) {
-                    int boardSize = atoi(argv[2]);
-                    int connectNumInput = atoi(argv[3]);
+        if (strcmp("Gomoku", argv[gameType]) == 0) {
+            if (atoi(argv[boardDimension]) >= 3) {
+                if (atoi(argv[winLengthInput]) <= atoi(argv[boardDimension]) && (atoi(argv[winLengthInput]) > 0)) {
+                    int boardSize = atoi(argv[boardDimension]);
+                    int connectNumInput = atoi(argv[winLengthInput]);
                     game = new GomokuGame(boardSize, connectNumInput);
                 }
-                
             }
         }
     }
@@ -56,13 +64,15 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
         }
     }
 
+    int longestLen = game.longestDispLen + 1;
     //print out game pieces on the board.
     for (int i = game.boardHeight - 1; i >= 0; i--) {
         cout << i << ""; //print out vertical label
         for (int j = 0; j <= game.boardWidth - 1; j++) {
             int index = game.boardWidth * i + j;
             /*using setw manipulator for the spacings between displayed pieces*/
-            cout << setw(static_cast<size_t>(game.longestDispLen) + 1) << game.pieceList[index].boardDisplay;
+            
+            cout << setw(longestLen) << game.pieceList[index].boardDisplay;
         }
         // same spacing for displayed pieces for horizontal alignment
         
@@ -72,9 +82,9 @@ ostream& operator<<(ostream& out, const TicTacToe& game) {
     }
 
     //print out horizontal label
-    cout << setw(static_cast<size_t>(game.longestDispLen) + 1)<< " " << 0;
+    cout << setw(longestLen)<< " " << 0;
     for (int i = 1; i < game.boardWidth; i++) {
-        cout << setw(static_cast<size_t>(game.longestDispLen) + 1) << i;
+        cout << setw(longestLen) << i;
     }
     cout << endl;
     return out;
@@ -97,6 +107,8 @@ ostream& operator<<(ostream& out, const GomokuGame& game) {
         }
     }
 
+    int longestLen_2 = game.longestDispLen + displace2;
+    int longestLen_1 = game.longestDispLen + displace1;
     //print out game pieces on the board.
     for (int i = game.boardHeight - 1; i >= 0; i--) {
         if (i < 9) {
@@ -109,23 +121,23 @@ ostream& operator<<(ostream& out, const GomokuGame& game) {
             int index = game.boardWidth * i + j;
             //using setw manipulator for the spacings between displayed pieces
             if (j >= 10) {
-                cout << setw(static_cast<size_t>(game.longestDispLen) + displace2) << game.pieceList[index].boardDisplay;
+                cout << setw(longestLen_2) << game.pieceList[index].boardDisplay;
                 continue;
             }
-            cout << setw(static_cast<size_t>(game.longestDispLen) + displace1) << game.pieceList[index].boardDisplay;
+            cout << setw(longestLen_1) << game.pieceList[index].boardDisplay;
         }
         // same spacing for displayed pieces for horizontal alignment
         cout << endl;
     }
 
     //print out horizontal label
-    cout << " X" << setw(static_cast<size_t>(game.longestDispLen) + 1);
+    cout << " X" << setw(longestLen_1);
     for (int i = 1; i <= game.boardWidth; i++) {
         if (i > 8) {
-            cout << i << setw(static_cast<size_t>(game.longestDispLen) + 2);
+            cout << i << setw(longestLen_2);
         }
         else {
-            cout << i << setw(static_cast<size_t>(game.longestDispLen) + 1);
+            cout << i << setw(longestLen_1);
         }
     }
     cout << endl;
