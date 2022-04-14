@@ -8,6 +8,7 @@ Users can play Tic-Tac-Toe, Gomoku, or customized Gomoku with appropriate comman
 
 	"TicTacToe" for the Tic-Tac-Toe game, 
 	"Gomoku" for the standard Gomoku game, which has a 19 by 19 gameboard and winning condition of 5 pieces in any directions
+	"Gomoku x" for the standard Gomoku game, which has a x by x gameboard and winning condition of 5 pieces in any directions
 	"Gomoku x y" for the customized Gomoku game, which has an x by x gameboard and wining condition of y pieces in any directions
 
 
@@ -31,7 +32,7 @@ Work Assignment
 	-----
 	34. Daniel R.
 	35. JinFeng C. Daniel R.
-	36.	Daniel R.
+	36-38. Daniel R.
 	
 
 Errors/Warnings:
