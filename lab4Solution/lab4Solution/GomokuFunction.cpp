@@ -95,6 +95,7 @@ bool GomokuGame::done() {
 				}
 			}
 			
+			//diagonal to the left check
 			if ((i < boardHeight - (connectNumLen - 1)) && (connectNumLen <= j)) {
 				if (pieceList[index].boardDisplay != " ") {
 					bool doneCheck = true;
