@@ -22,7 +22,7 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 		minCoor = 1;
 	}
 	else if ((piece == "B") || (piece == "W")) {
-		maxCoor = 19;
+		maxCoor = boardHeight;
 		minCoor = 1;
 		isGomoku = true;
 	}
