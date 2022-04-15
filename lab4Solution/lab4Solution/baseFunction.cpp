@@ -84,7 +84,7 @@ int GameBase::prompt(unsigned int& x, unsigned int& y) {
 				}
 
 				//Updates the longestDispLen variable if the new game piece has a longer length
-				int length = piece.length(); //A temp variable that keeps the length of the game piece display
+				int length = (int)piece.length(); //A temp variable that keeps the length of the game piece display
 				if (length > longestDispLen) {
 					longestDispLen = length;
 				}
