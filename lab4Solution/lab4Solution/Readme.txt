@@ -32,7 +32,7 @@ Work Assignment
 
 	6. Daniel R.
 	7. Daniel R.
-	8. Jinfeng C. -- need work on implementation of updating longestDispLen
+	8. Jinfeng C. 
 	9. Matthew K.
 	10.-12. Jinfeng C.
 	13.-15. Daniel R.
