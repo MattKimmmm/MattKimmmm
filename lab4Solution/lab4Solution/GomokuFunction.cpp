@@ -36,7 +36,7 @@ bool GomokuGame::done() {
 	size_t vert_inc = static_cast<size_t>(boardWidth);
 	size_t diag_inc_r = static_cast<size_t>(boardWidth)+1;
 	size_t diag_inc_l = static_cast<size_t>(boardWidth)-1;
-	size_t connectNumLen = (long)connectNum - 1;
+	size_t connectNumLen = (long long)connectNum - 1;
 	for (size_t i = first_piece_index; i < static_cast<size_t>(boardHeight); i++) {
 		for (size_t j = first_piece_index; j < static_cast<size_t>(boardWidth); j++) {
 			size_t index = boardWidth * i + j;

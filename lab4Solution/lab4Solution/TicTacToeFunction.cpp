@@ -24,8 +24,8 @@ bool TicTacToe::done() {
 	//checks if there are 3 horizontally consecutive pieces.
 	for (unsigned int i = 6; i < 17; i = i + 5)
 	{
-		if (pieceList[i].boardDisplay != " " && pieceList[i].boardDisplay == pieceList[i + displace1].boardDisplay
-			&& pieceList[(long long)i + (long long)displace1].boardDisplay == pieceList[i + displace2].boardDisplay)
+		if (pieceList[i].boardDisplay != " " && pieceList[i].boardDisplay == pieceList[(long long)i + (long long)displace1].boardDisplay
+			&& pieceList[(long long)i + (long long)displace1].boardDisplay == pieceList[(long long)i + (long long)displace2].boardDisplay)
 		{
 			winner = pieceList[i].boardDisplay; //assign the piece as winning piece.
 			return true;
@@ -34,8 +34,8 @@ bool TicTacToe::done() {
 
 	//checks if there are 3 vertically consecutive pieces.
 	for (unsigned int i = firstPieceIndex; i < 9; i++) {
-		if (pieceList[i].boardDisplay != " " && pieceList[i].boardDisplay == pieceList[i + displace5].boardDisplay
-			&& pieceList[i + displace5].boardDisplay == pieceList[i + displace10].boardDisplay)
+		if (pieceList[i].boardDisplay != " " && pieceList[i].boardDisplay == pieceList[(long long)i + (long long)displace5].boardDisplay
+			&& pieceList[(long long)i + (long long)displace5].boardDisplay == pieceList[(long long)i + (long long)displace10].boardDisplay)
 		{
 			winner = pieceList[i].boardDisplay;
 			return true;
@@ -43,8 +43,8 @@ bool TicTacToe::done() {
 	}
 
 	//checks if there are 3 diagonally(from bottom-left to top-right) consecutive pieces. 
-	if (pieceList[firstPieceIndex].boardDisplay != " " && pieceList[firstPieceIndex].boardDisplay == pieceList[firstPieceIndex * displace2].boardDisplay
-		&& pieceList[firstPieceIndex * displace2].boardDisplay == pieceList[firstPieceIndex * displace3].boardDisplay)
+	if (pieceList[firstPieceIndex].boardDisplay != " " && pieceList[firstPieceIndex].boardDisplay == pieceList[(long long)firstPieceIndex * (long long)displace2].boardDisplay
+		&& pieceList[(long long)firstPieceIndex * (long long)displace2].boardDisplay == pieceList[(long long)firstPieceIndex * (long long)displace3].boardDisplay)
 	{
 		winner = pieceList[firstPieceIndex].boardDisplay;
 		return true;
