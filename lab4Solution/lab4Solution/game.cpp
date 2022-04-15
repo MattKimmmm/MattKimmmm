@@ -22,6 +22,13 @@ static GameBase* checkArg(int argc, char* argv[]) {
     }
     else if (argc == 3) {
         if (strcmp("Gomoku", argv[gameType]) == 0) {
+
+            if (atoi(argv[boardDimension]) == displace3) {
+                int boardSize = atoi(argv[boardDimension]);
+                int connectNumInput = 3;
+                game = new GomokuGame(boardSize, connectNumInput);
+            }
+
             if (atoi(argv[boardDimension]) >= 5) {
                 int boardSize = atoi(argv[boardDimension]);
                 int connectNumInput = 5;
