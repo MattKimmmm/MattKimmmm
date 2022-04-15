@@ -4,12 +4,17 @@ Authors: Jinfeng Chen (c.jinfeng@wustl.edu), Daniel Ryu (r.seunghyeondaniel@wust
 CSE 332S  Lab 4
 
 This program supports two games, Tic-Tac-Toe and Gomoku. 
+
 Users can play Tic-Tac-Toe, Gomoku, or customized Gomoku with appropriate command line arguments:
 
 	"TicTacToe" for the Tic-Tac-Toe game, 
 	"Gomoku" for the standard Gomoku game, which has a 19 by 19 gameboard and winning condition of 5 pieces in any directions
 	"Gomoku x" for the standard Gomoku game, which has a x by x gameboard and winning condition of 5 pieces in any directions
 	"Gomoku x y" for the customized Gomoku game, which has an x by x gameboard and wining condition of y pieces in any directions
+
+
+Notes:
+	Gomoku: Game is a draw when there are less than [winning condition] number of consecutive empty spaces on the board
 
 
 Return Codes:

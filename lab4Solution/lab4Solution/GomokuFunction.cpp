@@ -140,7 +140,7 @@ bool GomokuGame::draw() {
 	for (int row = boardHeight - 1; row >= 0; --row) {
 
 		//Iterate through each column (of each row)
-		for (int col = 0; col < boardWidth - 1; ++col) {
+		for (int col = 0; col < boardWidth ; ++col) {
 
 			int index = row * boardWidth + col;
 
