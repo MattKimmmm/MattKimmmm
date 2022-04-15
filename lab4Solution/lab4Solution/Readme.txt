@@ -15,7 +15,13 @@ Users can play Tic-Tac-Toe, Gomoku, or customized Gomoku with appropriate comman
 Return Codes:
 
 	0 - Success
-
+	1 - Failure (Reserved-Currently no situation will lead to this return code)
+	2 - Fail to Extract Coordinates from user input
+	3 - Invalid input
+	4 - Game quits with user prompt
+	5 - Game is draw
+	6 - Incorrect usage (incorrect command line input)
+	7 - Bad allocation exception from dynamic memory allocation
 
 
 Work Assignment

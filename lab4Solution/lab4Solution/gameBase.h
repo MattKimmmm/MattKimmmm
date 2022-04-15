@@ -15,7 +15,7 @@ enum returnVal {
 	invalidInput,
 	quitGame,
 	drawGame,
-	incorrectInput,
+	incorrectUsage,
 	bad_allocation
 };
 
