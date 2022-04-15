@@ -10,7 +10,6 @@
 //Enumeration values for program return values.
 enum returnVal {
 	success,
-	failure,
 	extractFailure,
 	invalidInput,
 	quitGame,
