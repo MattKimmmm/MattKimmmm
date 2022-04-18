@@ -1,0 +1,22 @@
+Grader's name:
+grader's initials(used to mark comments in your code):
+Grader's email:
+
+Grade: /100
+
+Deductions: 
+The grader may leave comments throughout your graded code files. 
+Please search for the grader's initials above within you lab to find
+additional comments and feedback.
+
+ReadMe feedback and deductions:
+
+
+Code review feedback and deductions:
+
+
+Compilation and testing feedback and deductions:
+
+
+Extra credit:
+
