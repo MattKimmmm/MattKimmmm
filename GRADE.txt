@@ -1,8 +1,8 @@
-Grader's name:
-grader's initials(used to mark comments in your code):
-Grader's email:
+Grader's name: Stephanie Fisher
+grader's initials(used to mark comments in your code): sf
+Grader's email: f.stephanie@wustl.edu
 
-Grade: /100
+Grade: 99/100
 
 Deductions: 
 The grader may leave comments throughout your graded code files. 
@@ -13,10 +13,11 @@ ReadMe feedback and deductions:
 
 
 Code review feedback and deductions:
-
+-3 Insufficient modularity
+-3 Hard coded constants
 
 Compilation and testing feedback and deductions:
 
 
 Extra credit:
-
++5 Good job!
