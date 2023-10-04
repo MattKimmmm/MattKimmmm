@@ -12,7 +12,6 @@
 
 ### :technologist: About Me :
 I am majoring in Computer Science at Washington University in St. Louis.
-- I am aspiring software developing internship position in summer 2023.
 
 
 ---
