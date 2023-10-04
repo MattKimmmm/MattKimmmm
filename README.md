@@ -11,7 +11,7 @@
 ---
 
 ### :technologist: About Me :
-I am majoring in Computer Science at Washington University in St. Louis.
+I major in Computer Science at Washington University in St. Louis.
 
 
 ---
